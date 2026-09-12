@@ -1,34 +1,38 @@
 import type { Metadata } from "next";
-import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import { SITE_URL, site } from "@/config/site";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["600", "700", "800"],
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600"],
 });
+
+const title = `${site.productName} | Pagamento na Entrega`;
+const description =
+  "Amazolé é um clareador esfoliante corporal para axilas, virilhas, joelhos e cotovelos. Dermatologicamente testado, hipoalergênico e livre de parabenos. Pagamento somente na entrega.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${site.name} | Frete grátis e pagamento na entrega`,
-    template: `%s | ${site.shortName}`,
+    default: title,
+    template: `%s | ${site.name}`,
   },
-  description: site.description,
+  description,
   keywords: [
-    "removedor de cravos",
-    "removedor de cravos recarregável",
-    "limpeza de pele em casa",
-    "aspirador de cravos",
-    "cuidado facial",
+    "Amazolé",
+    "clareador esfoliante corporal",
+    "clareador de manchas",
+    "esfoliante corporal",
+    "clarear axilas",
+    "clarear virilha",
     "pagamento na entrega",
   ],
   alternates: {
@@ -38,74 +42,38 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: site.name,
-    locale: site.locale,
-    title: `${site.name} | Frete grátis e pagamento na entrega`,
-    description: site.description,
-    images: [
-      {
-        url: "/images/produto-kit-completo.png",
-        width: 1200,
-        height: 1200,
-        alt: "Removedor de Cravos Recarregável com ponteiras",
-      },
-    ],
+    title,
+    description,
+    locale: "pt_BR",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} | Frete grátis e pagamento na entrega`,
-    description: site.description,
-    images: ["/images/produto-kit-completo.png"],
+    title,
+    description,
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: site.name,
-  description: site.description,
-  image: [
-    `${SITE_URL}/images/produto-kit-completo.png`,
-    `${SITE_URL}/images/produto-ponteiras.png`,
-  ],
+  name: site.productName,
+  description,
   brand: {
     "@type": "Brand",
-    name: site.name,
+    name: site.manufacturer,
   },
+  category: "Cuidados com a pele",
+  url: SITE_URL,
   offers: {
     "@type": "Offer",
     priceCurrency: "BRL",
-    price: site.price.current.toFixed(2),
+    price: site.price.to.toFixed(2),
     availability: "https://schema.org/InStock",
     url: SITE_URL,
-    shippingDetails: {
-      "@type": "OfferShippingDetails",
-      shippingRate: {
-        "@type": "MonetaryAmount",
-        value: "0",
-        currency: "BRL",
-      },
-      deliveryTime: {
-        "@type": "ShippingDeliveryTime",
-        maxValue: 24,
-        unitCode: "HUR",
-      },
-    },
-    hasMerchantReturnPolicy: {
-      "@type": "MerchantReturnPolicy",
-      returnPolicyCategory:
-        "https://schema.org/MerchantReturnFiniteReturnWindow",
-      merchantReturnDays: 7,
-      returnMethod: "https://schema.org/ReturnByMail",
-      returnFees: "https://schema.org/FreeReturn",
-    },
   },
 };
 
@@ -113,14 +81,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="pt-BR"
-      className={`${fraunces.variable} ${plusJakarta.variable} h-full antialiased`}
+      className={`${manrope.variable} ${inter.variable} h-full antialiased`}
     >
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>

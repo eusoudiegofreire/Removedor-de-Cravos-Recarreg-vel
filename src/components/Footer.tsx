@@ -1,13 +1,25 @@
-export default function Footer() {
+import { resultsDisclaimer } from "@/config/site";
+
+export function Footer() {
   return (
-    <footer className="bg-white py-8 pb-24 sm:pb-8">
-      <div className="mx-auto max-w-6xl px-5 text-center sm:px-8">
-        <p className="font-display text-base font-semibold text-ink">
-          Removedor de Cravos Recarregável
+    <footer className="bg-text py-10 text-white/70">
+      <div className="mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8">
+        <span className="font-heading text-lg font-extrabold text-white">
+          Amazol<span className="text-turquoise">é</span>
+        </span>
+
+        <p className="mt-3 max-w-2xl text-xs leading-relaxed">
+          {resultsDisclaimer}
         </p>
-        <p className="mt-2 text-xs text-ink-soft">
-          Pagamento na entrega via Logzz. Frete grátis, entrega em até 24
-          horas e garantia de 7 dias.
+
+        <p className="mt-4 text-xs leading-relaxed">
+          Amazolé Clareador Esfoliante Corporal · Fabricado por Amazon Kaps ·
+          Produto de uso adulto (+18). Consulte um dermatologista em caso de
+          dúvidas sobre o uso.
+        </p>
+
+        <p className="mt-6 text-xs">
+          © {new Date().getFullYear()} Amazolé. Todos os direitos reservados.
         </p>
       </div>
     </footer>

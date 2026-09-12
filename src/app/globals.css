@@ -1,57 +1,78 @@
 @import "tailwindcss";
 
-@theme {
-  --color-rose-light: #f7c8d8;
-  --color-rose-baby: #fbe6ed;
-  --color-rose-metal: #c98296;
-  --color-blue-glass: #b8d8f2;
-  --color-ink: #2b2b2b;
-  --color-ink-soft: #6f6f6f;
-  --color-accent: #d94f7c;
-  --color-accent-dark: #b83a63;
+:root {
+  --color-white: #ffffff;
+  --color-offwhite: #f8f5ef;
+  --color-turquoise: #00b8c8;
+  --color-turquoise-dark: #00939f;
+  --color-turquoise-soft: #e3f7f9;
+  --color-magenta: #c6008f;
+  --color-magenta-dark: #9e0072;
+  --color-magenta-soft: #fbe6f3;
+  --color-green: #2f6f4e;
+  --color-green-soft: #e7f1eb;
+  --color-text: #222222;
+  --color-text-secondary: #666666;
+  --color-border: #e8e2d6;
 
-  --font-display: var(--font-fraunces), Georgia, serif;
-  --font-sans: var(--font-plus-jakarta), Arial, Helvetica, sans-serif;
-
-  --shadow-soft: 0 10px 30px -12px rgba(43, 43, 43, 0.15);
-  --shadow-card: 0 4px 20px -6px rgba(201, 130, 150, 0.25);
-
-  --animate-fade-up: fade-up 0.6s ease-out both;
-  --animate-float: float 5s ease-in-out infinite;
-
-  @keyframes fade-up {
-    from {
-      opacity: 0;
-      transform: translateY(16px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
+  --font-heading: var(--font-manrope);
+  --font-body: var(--font-inter);
 }
 
-body {
-  background: #ffffff;
-  color: var(--color-ink);
-  font-family: var(--font-sans);
+@theme {
+  --color-white: var(--color-white);
+  --color-offwhite: var(--color-offwhite);
+  --color-turquoise: var(--color-turquoise);
+  --color-turquoise-dark: var(--color-turquoise-dark);
+  --color-turquoise-soft: var(--color-turquoise-soft);
+  --color-magenta: var(--color-magenta);
+  --color-magenta-dark: var(--color-magenta-dark);
+  --color-magenta-soft: var(--color-magenta-soft);
+  --color-green: var(--color-green);
+  --color-green-soft: var(--color-green-soft);
+  --color-text: var(--color-text);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-border: var(--color-border);
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+
+  --radius-card: 20px;
+  --radius-button: 999px;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-::selection {
-  background: var(--color-rose-light);
-  color: var(--color-ink);
+body {
+  background: var(--color-offwhite);
+  color: var(--color-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    animation: reveal-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 25%;
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
