@@ -6,7 +6,7 @@ export default function Footer() {
           Removedor de Cravos Recarregável
         </p>
         <p className="mt-2 text-xs text-ink-soft">
-          Pagamento na entrega via LogZ. Frete grátis, entrega em até 24
+          Pagamento na entrega via Logzz. Frete grátis, entrega em até 24
           horas e garantia de 7 dias.
         </p>
       </div>

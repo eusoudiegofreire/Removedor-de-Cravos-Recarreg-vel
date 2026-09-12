@@ -1,6 +1,6 @@
 export const SITE_URL = "https://removedor-de-cravos.vercel.app";
 
-export const CTA_LINK = "#AGENDAR-ENTREGA-LOGZ";
+export const CTA_LINK = "#AGENDAR-ENTREGA-LOGZZ";
 export const CTA_LABEL = "Agendar minha entrega";
 
 export const site = {
