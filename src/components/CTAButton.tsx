@@ -20,6 +20,7 @@ export default function CTAButton({
   return (
     <Link
       href={CTA_LINK}
+      rel="noopener noreferrer"
       className={`inline-flex items-center justify-center gap-2 rounded-full bg-accent ${sizeClasses} font-bold text-white shadow-card transition-transform duration-200 hover:-translate-y-0.5 hover:bg-accent-dark active:translate-y-0 ${className}`}
     >
       {label}

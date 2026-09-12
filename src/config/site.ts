@@ -1,6 +1,7 @@
 export const SITE_URL = "https://removedor-de-cravos.vercel.app";
 
-export const CTA_LINK = "#AGENDAR-ENTREGA-LOGZZ";
+export const CTA_LINK =
+  "https://entrega.logzz.com.br/pay/memkn33yw/removedor-de-cravos-eletrico-r-12999";
 export const CTA_LABEL = "Agendar minha entrega";
 
 export const site = {
