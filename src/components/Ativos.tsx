@@ -1,6 +1,7 @@
-import { TextureIllustration } from "@/components/ProductArt";
+import { PhotoCard } from "@/components/ui/PhotoCard";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { actives } from "@/config/site";
+import { ativosImage } from "@/config/images";
 
 export function Ativos() {
   return (
@@ -24,8 +25,14 @@ export function Ativos() {
           ))}
         </div>
 
-        <div className="reveal overflow-hidden rounded-card border border-border">
-          <TextureIllustration className="w-full" />
+        <div className="reveal">
+          <PhotoCard
+            src={ativosImage.src}
+            alt={ativosImage.alt}
+            width={ativosImage.width}
+            height={ativosImage.height}
+            sizes="(min-width: 1024px) 560px, 100vw"
+          />
         </div>
       </div>
     </Section>

@@ -40,3 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .gstack/
+
+# raw source image dump (renamed copies live in public/images/amazole)
+/imagens/

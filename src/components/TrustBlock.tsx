@@ -1,7 +1,8 @@
 import { CalendarCheck, PackageCheck, SearchCheck, Wallet } from "lucide-react";
-import { JarIllustration } from "@/components/ProductArt";
+import { PhotoCard } from "@/components/ui/PhotoCard";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { trustSteps } from "@/config/site";
+import { entregaImage } from "@/config/images";
 
 const icons = [CalendarCheck, PackageCheck, SearchCheck, Wallet];
 
@@ -43,7 +44,14 @@ export function TrustBlock({
         </div>
 
         <div className="reveal flex justify-center">
-          <JarIllustration variant="closed" className="w-full max-w-xs" />
+          <PhotoCard
+            src={entregaImage.src}
+            alt={entregaImage.alt}
+            width={entregaImage.width}
+            height={entregaImage.height}
+            sizes="(min-width: 1024px) 480px, 90vw"
+            className="w-full max-w-sm"
+          />
         </div>
       </div>
     </Section>

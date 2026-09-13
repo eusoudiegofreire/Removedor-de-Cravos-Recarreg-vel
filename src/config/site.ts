@@ -16,43 +16,6 @@ export const site = {
   ctaLink: CTA_LINK,
 };
 
-export type Kit = {
-  id: string;
-  units: number;
-  label: string;
-  price: number;
-  unitPrice?: number;
-  highlight?: string;
-  featured?: boolean;
-};
-
-export const kits: Kit[] = [
-  {
-    id: "kit-1",
-    units: 1,
-    label: "1 unidade",
-    price: 127.0,
-    highlight: "Ideal para experimentar",
-  },
-  {
-    id: "kit-2",
-    units: 2,
-    label: "2 unidades",
-    price: 197.0,
-    unitPrice: 98.5,
-    highlight: "Melhor custo-benefício",
-    featured: true,
-  },
-  {
-    id: "kit-3",
-    units: 3,
-    label: "3 unidades",
-    price: 267.0,
-    unitPrice: 89.0,
-    highlight: "Para manter o cuidado por mais tempo",
-  },
-];
-
 export const heroBullets = [
   "Clareador esfoliante corporal",
   "Para axilas, virilhas, joelhos e cotovelos",

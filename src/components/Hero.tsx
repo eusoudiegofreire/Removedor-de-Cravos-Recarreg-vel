@@ -1,7 +1,8 @@
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { JarIllustration } from "@/components/ProductArt";
+import { PhotoCard } from "@/components/ui/PhotoCard";
 import { heroBullets, site } from "@/config/site";
+import { heroImage } from "@/config/images";
 
 type HeroProps = {
   badge?: string;
@@ -69,9 +70,17 @@ export function Hero({
         </div>
 
         <div className="order-1 flex justify-center lg:order-2">
-          <div className="relative w-full max-w-sm">
+          <div className="relative w-full max-w-md">
             <div className="absolute -inset-6 -z-10 rounded-full bg-turquoise/10 blur-2xl" />
-            <JarIllustration variant="open" className="w-full drop-shadow-xl" />
+            <PhotoCard
+              src={heroImage.src}
+              alt={heroImage.alt}
+              width={heroImage.width}
+              height={heroImage.height}
+              sizes="(min-width: 1024px) 480px, 90vw"
+              priority
+              className="shadow-lg"
+            />
           </div>
         </div>
       </div>

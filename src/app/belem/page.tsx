@@ -3,13 +3,14 @@ import { Ativos } from "@/components/Ativos";
 import { Beneficios } from "@/components/Beneficios";
 import { ComoUsar } from "@/components/ComoUsar";
 import { CtaFinal } from "@/components/CtaFinal";
+import { Depoimentos } from "@/components/Depoimentos";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Oferta } from "@/components/Oferta";
 import { ParaQueServe } from "@/components/ParaQueServe";
-import { ProvaVisual } from "@/components/ProvaVisual";
+import { Resultados } from "@/components/Resultados";
 import { StickyMobileCta } from "@/components/StickyMobileCta";
 import { TrustBlock } from "@/components/TrustBlock";
 import { SITE_URL, site } from "@/config/site";
@@ -98,19 +99,10 @@ export default function BelemPage() {
           items={areasBelem}
         />
         <Beneficios />
-        <Ativos />
         <ComoUsar />
-        <ProvaVisual
-          title="Veja o produto de perto"
-          text="Confira imagens reais do Amazolé, a textura do creme e demonstrações do produto."
-          items={[
-            { kind: "jar", label: "Foto real do pote" },
-            { kind: "photo", label: "Foto da textura do creme" },
-            { kind: "video", label: "Vídeo demonstrativo real, se houver" },
-            { kind: "photo", label: "Depoimentos reais, se houver" },
-          ]}
-          caption="Fotos, vídeos e depoimentos reais podem ser inseridos aqui."
-        />
+        <Ativos />
+        <Resultados title="Resultados reais de quem usou o Amazolé" />
+        <Depoimentos title="Depoimentos de clientes que receberam em casa" />
         <Oferta
           title="Garanta o seu Amazolé em Belém"
           includes={ofertaIncludesBelem}

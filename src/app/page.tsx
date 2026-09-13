@@ -7,10 +7,9 @@ import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { Kits } from "@/components/Kits";
 import { Oferta } from "@/components/Oferta";
 import { ParaQueServe } from "@/components/ParaQueServe";
-import { ProvaVisual } from "@/components/ProvaVisual";
+import { Resultados } from "@/components/Resultados";
 import { StickyMobileCta } from "@/components/StickyMobileCta";
 import { TrustBlock } from "@/components/TrustBlock";
 
@@ -23,12 +22,11 @@ export default function Home() {
         <TrustBlock />
         <ParaQueServe />
         <Beneficios />
-        <Ativos />
         <ComoUsar />
-        <ProvaVisual />
+        <Ativos />
+        <Resultados />
         <Depoimentos />
         <Oferta />
-        <Kits />
         <Faq />
         <CtaFinal />
       </main>
