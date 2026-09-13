@@ -1,7 +1,17 @@
 import { Button } from "@/components/ui/Button";
 import { site } from "@/config/site";
 
-export function Header() {
+type HeaderProps = {
+  ctaLabel?: string;
+  ctaLink?: string;
+  mobileLabel?: string;
+};
+
+export function Header({
+  ctaLabel = site.ctaLabel,
+  ctaLink = site.ctaLink,
+  mobileLabel = "Agendar",
+}: HeaderProps = {}) {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-white/90 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-3 sm:px-6 lg:px-8">
@@ -9,13 +19,13 @@ export function Header() {
           Amazol<span className="text-turquoise">é</span>
         </span>
         <div className="hidden sm:block">
-          <Button href={site.ctaLink} variant="primary" size="md">
-            {site.ctaLabel}
+          <Button href={ctaLink} variant="primary" size="md">
+            {ctaLabel}
           </Button>
         </div>
         <div className="sm:hidden">
-          <Button href={site.ctaLink} variant="primary" size="md">
-            Agendar
+          <Button href={ctaLink} variant="primary" size="md">
+            {mobileLabel}
           </Button>
         </div>
       </div>

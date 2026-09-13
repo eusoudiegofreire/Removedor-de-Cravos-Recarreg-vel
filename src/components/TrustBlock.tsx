@@ -5,20 +5,27 @@ import { trustSteps } from "@/config/site";
 
 const icons = [CalendarCheck, PackageCheck, SearchCheck, Wallet];
 
-export function TrustBlock() {
+type TrustBlockProps = {
+  eyebrow?: string;
+  title?: string;
+  text?: string;
+  steps?: string[];
+};
+
+export function TrustBlock({
+  eyebrow = "Compra sem risco",
+  title = "Compre sem pagar antes",
+  text = "Agende sua entrega, receba o Amazolé em casa e pague somente no momento da entrega. Uma forma mais segura e prática de comprar.",
+  steps = trustSteps,
+}: TrustBlockProps = {}) {
   return (
     <Section bg="offwhite">
       <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
         <div>
-          <SectionHeading
-            align="left"
-            eyebrow="Compra sem risco"
-            title="Compre sem pagar antes"
-            text="Agende sua entrega, receba o Amazolé em casa e pague somente no momento da entrega. Uma forma mais segura e prática de comprar."
-          />
+          <SectionHeading align="left" eyebrow={eyebrow} title={title} text={text} />
 
           <div className="reveal mt-8 grid grid-cols-2 gap-4">
-            {trustSteps.map((step, index) => {
+            {steps.map((step, index) => {
               const Icon = icons[index];
               return (
                 <div

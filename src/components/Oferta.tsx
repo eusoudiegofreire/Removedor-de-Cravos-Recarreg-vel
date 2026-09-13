@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { site } from "@/config/site";
 
-const includes = [
+const defaultIncludes = [
   "1 unidade Amazolé 200g",
   "Produto dermatologicamente testado",
   "Hipoalergênico",
@@ -13,13 +13,26 @@ const includes = [
   "Dinheiro, Pix ou cartão",
 ];
 
-export function Oferta() {
+type OfertaProps = {
+  eyebrow?: string;
+  title?: string;
+  includes?: string[];
+  ctaLabel?: string;
+  ctaLink?: string;
+  footnote?: string;
+};
+
+export function Oferta({
+  eyebrow = "Oferta",
+  title = "Garanta o seu Amazolé com pagamento na entrega",
+  includes = defaultIncludes,
+  ctaLabel = site.ctaLabel,
+  ctaLink = site.ctaLink,
+  footnote = "Você só paga quando receber.",
+}: OfertaProps = {}) {
   return (
     <Section id="oferta">
-      <SectionHeading
-        eyebrow="Oferta"
-        title="Garanta o seu Amazolé com pagamento na entrega"
-      />
+      <SectionHeading eyebrow={eyebrow} title={title} />
 
       <div className="reveal mx-auto mt-10 grid max-w-4xl grid-cols-1 items-center gap-8 rounded-card border border-border bg-offwhite p-6 sm:p-10 lg:grid-cols-2">
         <div className="flex justify-center">
@@ -50,12 +63,10 @@ export function Oferta() {
           </div>
 
           <div className="mt-6">
-            <Button href={site.ctaLink} size="lg" className="w-full sm:w-auto">
-              {site.ctaLabel}
+            <Button href={ctaLink} size="lg" className="w-full sm:w-auto">
+              {ctaLabel}
             </Button>
-            <p className="mt-3 text-sm font-medium text-green">
-              Você só paga quando receber.
-            </p>
+            <p className="mt-3 text-sm font-medium text-green">{footnote}</p>
           </div>
         </div>
       </div>
