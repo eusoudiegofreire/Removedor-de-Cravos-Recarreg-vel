@@ -33,6 +33,13 @@ export const entregaImage: ProductImage = {
   alt: "Entrega e pagamento na entrega do Amazolé",
 };
 
+export const ofertaImage: ProductImage = {
+  src: "/images/amazole/imagem-da-oferta.webp",
+  width: 900,
+  height: 900,
+  alt: "Amazolé Clareador Esfoliante Corporal 200g",
+};
+
 export const resultadosImages: ProductImage[] = [
   {
     src: "/images/amazole/resultado-1.webp",

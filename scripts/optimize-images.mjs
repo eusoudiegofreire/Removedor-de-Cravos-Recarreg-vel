@@ -10,6 +10,7 @@ const RENAME = {
   "Textura do creme.png": ["textura-do-creme", 1200],
   "Ativos naturais.png": ["ativos-naturais", 1200],
   "Entrega e pagamento.png": ["entrega-e-pagamento", 1200],
+  "imagem da oferta.png": ["imagem-da-oferta", 900],
   "resultado (1).png": ["resultado-1", 900],
   "resultado (2).png": ["resultado-2", 900],
   "resultado (3).png": ["resultado-3", 900],

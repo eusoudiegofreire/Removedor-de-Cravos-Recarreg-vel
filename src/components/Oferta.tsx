@@ -1,8 +1,9 @@
 import { Check } from "lucide-react";
-import { JarIllustration } from "@/components/ProductArt";
 import { Button } from "@/components/ui/Button";
+import { PhotoCard } from "@/components/ui/PhotoCard";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { site } from "@/config/site";
+import { ofertaImage } from "@/config/images";
 
 const defaultIncludes = [
   "1 unidade Amazolé 200g",
@@ -36,7 +37,14 @@ export function Oferta({
 
       <div className="reveal mx-auto mt-10 grid max-w-4xl grid-cols-1 items-center gap-8 rounded-card border border-border bg-offwhite p-6 sm:p-10 lg:grid-cols-2">
         <div className="flex justify-center">
-          <JarIllustration variant="closed" className="w-full max-w-[220px]" />
+          <PhotoCard
+            src={ofertaImage.src}
+            alt={ofertaImage.alt}
+            width={ofertaImage.width}
+            height={ofertaImage.height}
+            sizes="(min-width: 1024px) 320px, 60vw"
+            className="w-full max-w-[280px]"
+          />
         </div>
 
         <div>
