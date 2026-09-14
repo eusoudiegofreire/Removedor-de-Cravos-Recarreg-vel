@@ -17,7 +17,7 @@ const inter = Inter({
 
 const title = `${site.productName} | Pagamento na Entrega`;
 const description =
-  "Amazolé é um clareador esfoliante corporal para axilas, virilhas, joelhos e cotovelos. Dermatologicamente testado, hipoalergênico e livre de parabenos. Pagamento somente na entrega.";
+  "Clareador de manchas esfoliante para axilas, virilhas, joelhos e cotovelos. Dermatologicamente testado, hipoalergênico e livre de parabenos. Pagamento somente na entrega.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

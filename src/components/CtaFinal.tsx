@@ -11,7 +11,7 @@ type CtaFinalProps = {
 
 export function CtaFinal({
   title = "Clareie e cuide da pele com mais praticidade",
-  text = "Amazolé Clareador Esfoliante Corporal 200g para o cuidado de áreas escurecidas, manchas e regiões de atrito.",
+  text = "Clareador de Manchas Esfoliante Corporal 200g para o cuidado de áreas escurecidas, manchas e regiões de atrito.",
   ctaLabel = site.ctaLabel,
   ctaLink = site.ctaLink,
   footnote = "Pagamento somente na entrega: dinheiro, Pix ou cartão.",

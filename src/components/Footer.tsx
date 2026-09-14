@@ -13,8 +13,8 @@ export function Footer() {
         </p>
 
         <p className="mt-4 text-xs leading-relaxed">
-          Amazolé Clareador Esfoliante Corporal · Fabricado por Amazon Kaps ·
-          Produto de uso adulto (+18). Consulte um dermatologista em caso de
+          Clareador de Manchas Esfoliante Corporal · Fabricado por Amazon Kaps
+          · Produto de uso adulto (+18). Consulte um dermatologista em caso de
           dúvidas sobre o uso.
         </p>
 

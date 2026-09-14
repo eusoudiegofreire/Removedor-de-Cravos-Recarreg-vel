@@ -16,7 +16,7 @@ type TrustBlockProps = {
 export function TrustBlock({
   eyebrow = "Compra sem risco",
   title = "Compre sem pagar antes",
-  text = "Agende sua entrega, receba o Amazolé em casa e pague somente no momento da entrega. Uma forma mais segura e prática de comprar.",
+  text = "Agende sua entrega, receba o Clareador de Manchas em casa e pague somente no momento da entrega. Uma forma mais segura e prática de comprar.",
   steps = trustSteps,
 }: TrustBlockProps = {}) {
   return (

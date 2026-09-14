@@ -34,7 +34,7 @@ export const trustStepsBelem = [
 ];
 
 export const ofertaIncludesBelem = [
-  "1 unidade Amazolé 200g",
+  "1 unidade Clareador de Manchas 200g",
   "Produto dermatologicamente testado",
   "Hipoalergênico",
   "Livre de parabenos",
@@ -57,7 +57,7 @@ export const faqItemsBelem: FaqItem[] = [
   },
   {
     question: "O produto é clareador?",
-    answer: "Sim. O Amazolé é um clareador esfoliante corporal.",
+    answer: "Sim. É um clareador de manchas esfoliante para o corpo.",
   },
   {
     question: "Pode usar em quais áreas?",

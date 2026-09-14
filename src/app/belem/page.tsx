@@ -25,7 +25,7 @@ import {
 
 const title = `${site.productName} com entrega em Belém`;
 const description =
-  "Amazolé Clareador Esfoliante Corporal com entrega em Belém. Pagamento somente na entrega: dinheiro, Pix ou cartão. Agende já a sua.";
+  "Clareador de Manchas Esfoliante Corporal com entrega em Belém. Pagamento somente na entrega: dinheiro, Pix ou cartão. Agende já a sua.";
 
 export const metadata: Metadata = {
   title,
@@ -82,7 +82,7 @@ export default function BelemPage() {
       <Header ctaLabel={belem.ctaLabel} ctaLink={belem.ctaLink} />
       <main className="pb-24 sm:pb-0">
         <Hero
-          headline="Amazolé Clareador Esfoliante Corporal com entrega em Belém"
+          headline="Clareador de Manchas Esfoliante Corporal com entrega em Belém"
           subheadline="Clareador esfoliante corporal para o cuidado de áreas escurecidas e tom irregular da pele. Produto adulto, dermatologicamente testado, com pagamento somente na entrega em Belém."
           bullets={heroBulletsBelem}
           trustLine="Você recebe em Belém e paga somente quando o produto chegar."
@@ -91,20 +91,20 @@ export default function BelemPage() {
         />
         <TrustBlock
           title="Receba em Belém e pague só na entrega"
-          text="Você agenda sua entrega, recebe o Amazolé no endereço informado em Belém e paga somente quando o produto chegar."
+          text="Você agenda sua entrega, recebe o Clareador de Manchas no endereço informado em Belém e paga somente quando o produto chegar."
           steps={trustStepsBelem}
         />
         <ParaQueServe
-          text="O Amazolé é um clareador esfoliante corporal para o cuidado de áreas com tom irregular, manchas e regiões de atrito."
+          text="O Clareador de Manchas é um esfoliante corporal para o cuidado de áreas com tom irregular, manchas e regiões de atrito."
           items={areasBelem}
         />
         <Beneficios />
         <ComoUsar />
         <Ativos />
-        <Resultados title="Resultados reais de quem usou o Amazolé" />
+        <Resultados title="Resultados reais de quem usou o Clareador de Manchas" />
         <Depoimentos title="Depoimentos de clientes que receberam em casa" />
         <Oferta
-          title="Garanta o seu Amazolé em Belém"
+          title="Garanta o seu Clareador de Manchas em Belém"
           includes={ofertaIncludesBelem}
           ctaLabel={belem.ctaLabel}
           ctaLink={belem.ctaLink}
@@ -113,7 +113,7 @@ export default function BelemPage() {
         <Faq items={faqItemsBelem} />
         <CtaFinal
           title="Agende sua entrega em Belém"
-          text="Amazolé Clareador Esfoliante Corporal 200g para cuidado de áreas escurecidas e tom irregular da pele."
+          text="Clareador de Manchas Esfoliante Corporal 200g para cuidado de áreas escurecidas e tom irregular da pele."
           ctaLabel={belem.ctaLabel}
           ctaLink={belem.ctaLink}
           footnote="Você paga somente quando receber."

@@ -14,7 +14,7 @@ const icons = [Sparkles, Droplets, ScanFace, Leaf, ShieldCheck, Wallet];
 export function Beneficios() {
   return (
     <Section bg="offwhite">
-      <SectionHeading eyebrow="Benefícios" title="Por que escolher o Amazolé?" />
+      <SectionHeading eyebrow="Benefícios" title="Por que escolher o Clareador de Manchas?" />
 
       <div className="reveal mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {benefits.map((benefit, index) => {

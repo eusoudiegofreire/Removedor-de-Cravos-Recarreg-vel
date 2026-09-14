@@ -4,8 +4,8 @@ export const CTA_LINK = "#AGENDAR-ENTREGA-LOGZ";
 
 export const site = {
   name: "Amazolé",
-  productName: "Amazolé Clareador Esfoliante Corporal",
-  tagline: "Clareador esfoliante corporal",
+  productName: "Clareador de Manchas Esfoliante Corporal",
+  tagline: "Clareador de manchas esfoliante corporal",
   manufacturer: "Amazon Kaps",
   volume: "200g",
   price: {
@@ -123,7 +123,7 @@ export const faqItems: FaqItem[] = [
   },
   {
     question: "O produto é clareador?",
-    answer: "Sim. O Amazolé é um clareador esfoliante corporal.",
+    answer: "Sim. É um clareador de manchas esfoliante para o corpo.",
   },
   {
     question: "Pode usar em quais áreas?",

@@ -18,7 +18,7 @@ type HeroProps = {
 export function Hero({
   badge = "Produto adulto +18",
   headline = "Clareador corporal para áreas escurecidas e manchas na pele",
-  subheadline = "Amazolé combina ação clareadora e esfoliante para ajudar a uniformizar o tom da pele em áreas como axilas, virilhas, joelhos e cotovelos.",
+  subheadline = "O Clareador de Manchas combina ação clareadora e esfoliante para ajudar a uniformizar o tom da pele em áreas como axilas, virilhas, joelhos e cotovelos.",
   bullets = heroBullets,
   trustLine = "Você recebe primeiro e paga somente quando o produto chegar.",
   ctaLabel = site.ctaLabel,

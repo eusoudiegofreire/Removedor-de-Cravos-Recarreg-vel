@@ -9,7 +9,7 @@ type ParaQueServeProps = {
 
 export function ParaQueServe({
   title = "Cuidado clareador para áreas que costumam escurecer",
-  text = "O Amazolé é um creme clareador esfoliante corporal desenvolvido para o cuidado de áreas com tom irregular, manchas e regiões de atrito.",
+  text = "O Clareador de Manchas é um creme esfoliante corporal desenvolvido para o cuidado de áreas com tom irregular, manchas e regiões de atrito.",
   items = areas,
 }: ParaQueServeProps = {}) {
   return (

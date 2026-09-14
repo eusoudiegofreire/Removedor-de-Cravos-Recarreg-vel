@@ -6,7 +6,7 @@ import { site } from "@/config/site";
 import { ofertaImage } from "@/config/images";
 
 const defaultIncludes = [
-  "1 unidade Amazolé 200g",
+  "1 unidade Clareador de Manchas 200g",
   "Produto dermatologicamente testado",
   "Hipoalergênico",
   "Livre de parabenos",
@@ -25,7 +25,7 @@ type OfertaProps = {
 
 export function Oferta({
   eyebrow = "Oferta",
-  title = "Garanta o seu Amazolé com pagamento na entrega",
+  title = "Garanta o seu Clareador de Manchas com pagamento na entrega",
   includes = defaultIncludes,
   ctaLabel = site.ctaLabel,
   ctaLink = site.ctaLink,
