@@ -27,6 +27,7 @@ export function Resultados({
             height={image.height}
             sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, 80vw"
             className="w-[80vw] shrink-0 snap-center sm:w-full sm:shrink"
+            interactive
           />
         ))}
       </div>

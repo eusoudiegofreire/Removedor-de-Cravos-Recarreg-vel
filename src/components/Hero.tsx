@@ -28,7 +28,7 @@ export function Hero({
   return (
     <section className="bg-offwhite">
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 px-5 py-12 sm:px-6 sm:py-16 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-20">
-        <div className="order-2 lg:order-1">
+        <div className="enter order-2 lg:order-1">
           <span className="inline-flex items-center rounded-button bg-magenta-soft px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-magenta-dark">
             {badge}
           </span>
@@ -70,7 +70,7 @@ export function Hero({
         </div>
 
         <div className="order-1 flex justify-center lg:order-2">
-          <div className="relative w-full max-w-md">
+          <div className="enter enter-delay relative w-full max-w-md">
             <div className="absolute -inset-6 -z-10 rounded-full bg-turquoise/10 blur-2xl" />
             <PhotoCard
               src={heroImage.src}

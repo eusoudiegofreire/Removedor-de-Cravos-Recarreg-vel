@@ -11,7 +11,7 @@ export function StickyMobileCta({
   ctaLink = site.ctaLink,
 }: StickyMobileCtaProps = {}) {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-white/95 px-4 py-3 backdrop-blur sm:hidden">
+    <div className="enter fixed inset-x-0 bottom-0 z-50 border-t border-border bg-white/95 px-4 py-3 backdrop-blur sm:hidden">
       <div className="flex items-center justify-between gap-3">
         <div className="leading-tight">
           <p className="text-[11px] text-text-secondary">De R$ 149,90 por</p>

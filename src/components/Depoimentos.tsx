@@ -27,6 +27,7 @@ export function Depoimentos({
             height={image.height}
             sizes="(min-width: 640px) 33vw, 80vw"
             className="w-[75vw] shrink-0 snap-center sm:w-full sm:shrink"
+            interactive
           />
         ))}
       </div>

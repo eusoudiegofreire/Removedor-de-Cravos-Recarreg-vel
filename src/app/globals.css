@@ -17,6 +17,8 @@
 
   --font-heading: var(--font-manrope);
   --font-body: var(--font-inter);
+
+  --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme {
@@ -39,6 +41,8 @@
 
   --radius-card: 20px;
   --radius-button: 999px;
+
+  --ease-snappy: var(--ease-snappy);
 }
 
 html {
@@ -58,11 +62,51 @@ h4 {
   font-family: var(--font-heading), system-ui, sans-serif;
 }
 
+/* Motion: respect user preference above everything else. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
+  /* Scroll-triggered reveal for section content (once per section, not repeated). */
   .reveal {
-    animation: reveal-in linear both;
+    animation: reveal-in var(--ease-snappy) both;
     animation-timeline: view();
     animation-range: entry 0% cover 25%;
+  }
+
+  /* Load-time entrance for above-the-fold content (hero, sticky CTA bar). */
+  .enter {
+    transition:
+      opacity 0.6s var(--ease-snappy),
+      transform 0.6s var(--ease-snappy),
+      filter 0.6s var(--ease-snappy);
+  }
+
+  @starting-style {
+    .enter {
+      opacity: 0;
+      transform: translateY(12px);
+      filter: blur(6px);
+    }
+  }
+
+  .enter-delay {
+    transition-delay: 0.12s;
+  }
+
+  /* Depth cue once the page has scrolled past the header. */
+  header {
+    animation: header-shadow linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0px 120px;
   }
 }
 
@@ -70,9 +114,20 @@ h4 {
   from {
     opacity: 0;
     transform: translateY(16px);
+    filter: blur(6px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes header-shadow {
+  from {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0);
+  }
+  to {
+    box-shadow: 0 8px 24px -16px rgba(0, 0, 0, 0.25);
   }
 }

@@ -10,13 +10,13 @@ type ButtonProps = {
 };
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-button font-heading font-bold text-center transition-transform duration-150 active:scale-[0.98]";
+  "inline-flex items-center justify-center gap-2 rounded-button font-heading font-bold text-center transition-[background-color,color,border-color,box-shadow,translate,scale] duration-200 ease-snappy hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] active:duration-100";
 
 const variants: Record<NonNullable<ButtonProps["variant"]>, string> = {
   primary:
-    "bg-turquoise text-white shadow-[0_10px_24px_-8px_rgba(0,184,200,0.55)] hover:bg-turquoise-dark",
+    "bg-turquoise text-white shadow-[0_10px_24px_-8px_rgba(0,184,200,0.55)] hover:bg-turquoise-dark hover:shadow-[0_14px_28px_-8px_rgba(0,184,200,0.6)]",
   secondary:
-    "bg-magenta text-white shadow-[0_10px_24px_-8px_rgba(198,0,143,0.45)] hover:bg-magenta-dark",
+    "bg-magenta text-white shadow-[0_10px_24px_-8px_rgba(198,0,143,0.45)] hover:bg-magenta-dark hover:shadow-[0_14px_28px_-8px_rgba(198,0,143,0.5)]",
   outline:
     "bg-white text-text border border-border hover:border-turquoise hover:text-turquoise",
 };
