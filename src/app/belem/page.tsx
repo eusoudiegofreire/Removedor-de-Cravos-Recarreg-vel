@@ -6,6 +6,7 @@ import { CtaFinal } from "@/components/CtaFinal";
 import { Depoimentos } from "@/components/Depoimentos";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
+import { Gaps } from "@/components/Gaps";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Oferta } from "@/components/Oferta";
@@ -109,6 +110,11 @@ export default function BelemPage() {
           ctaLabel={belem.ctaLabel}
           ctaLink={belem.ctaLink}
           footnote="Você paga somente quando receber."
+        />
+        <Gaps
+          closing="Você não precisa pagar antes para começar. Agende sua entrega e receba o Clareador de Manchas no endereço informado em Belém."
+          ctaLabel={belem.ctaLabel}
+          ctaLink={belem.ctaLink}
         />
         <Faq items={faqItemsBelem} />
         <CtaFinal

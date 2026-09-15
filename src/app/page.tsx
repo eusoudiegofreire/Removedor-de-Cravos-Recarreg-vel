@@ -5,6 +5,7 @@ import { CtaFinal } from "@/components/CtaFinal";
 import { Depoimentos } from "@/components/Depoimentos";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
+import { Gaps } from "@/components/Gaps";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Oferta } from "@/components/Oferta";
@@ -27,6 +28,7 @@ export default function Home() {
         <Resultados />
         <Depoimentos />
         <Oferta />
+        <Gaps />
         <Faq />
         <CtaFinal />
       </main>
