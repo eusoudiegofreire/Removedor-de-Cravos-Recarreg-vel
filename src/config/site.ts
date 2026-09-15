@@ -1,6 +1,6 @@
 export const SITE_URL = "https://www.amazole.com.br";
 
-export const CTA_LINK = "#AGENDAR-ENTREGA-LOGZ";
+export const CTA_LINK = "https://entrega.logzz.com.br/pay/de-r-14990-por-r-12700";
 
 export const site = {
   name: "Amazolé",

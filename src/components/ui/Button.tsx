@@ -36,6 +36,7 @@ export function Button({
   return (
     <Link
       href={href}
+      rel="noopener noreferrer"
       className={`${base} ${variants[variant]} ${sizes[size]} ${className}`}
     >
       {children}
