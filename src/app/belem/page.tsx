@@ -4,6 +4,7 @@ import { Beneficios } from "@/components/Beneficios";
 import { ComoUsar } from "@/components/ComoUsar";
 import { CtaFinal } from "@/components/CtaFinal";
 import { Depoimentos } from "@/components/Depoimentos";
+import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { Gaps } from "@/components/Gaps";
@@ -21,6 +22,7 @@ import {
   faqItemsBelem,
   heroBulletsBelem,
   ofertaIncludesBelem,
+  popupBelem,
   trustStepsBelem,
 } from "@/config/belem";
 
@@ -127,6 +129,11 @@ export default function BelemPage() {
       </main>
       <Footer />
       <StickyMobileCta ctaLabel={belem.ctaLabel} ctaLink={belem.ctaLink} />
+      <ExitIntentPopup
+        coupon={popupBelem.coupon}
+        ctaLabel={popupBelem.ctaLabel}
+        ctaLink={belem.ctaLink}
+      />
     </>
   );
 }

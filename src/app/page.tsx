@@ -3,6 +3,7 @@ import { Beneficios } from "@/components/Beneficios";
 import { ComoUsar } from "@/components/ComoUsar";
 import { CtaFinal } from "@/components/CtaFinal";
 import { Depoimentos } from "@/components/Depoimentos";
+import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { Gaps } from "@/components/Gaps";
@@ -34,6 +35,7 @@ export default function Home() {
       </main>
       <Footer />
       <StickyMobileCta />
+      <ExitIntentPopup />
     </>
   );
 }

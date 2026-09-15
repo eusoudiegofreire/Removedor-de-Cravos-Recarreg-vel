@@ -1,9 +1,15 @@
-import { CTA_LINK, type FaqItem } from "@/config/site";
+import { CTA_LINK, type FaqItem, popup } from "@/config/site";
 
 export const belem = {
   city: "Belém",
   ctaLabel: "Agendar minha entrega em Belém",
   ctaLink: CTA_LINK,
+};
+
+export const popupBelem = {
+  ...popup,
+  coupon: "BELEM10",
+  ctaLabel: "Agendar minha entrega em Belém com desconto",
 };
 
 export const heroBulletsBelem = [
