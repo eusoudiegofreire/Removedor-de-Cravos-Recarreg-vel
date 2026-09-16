@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { CheckCircle2, Home, PackageCheck, Wallet } from "lucide-react";
 import { Footer } from "@/components/Footer";
 import { GOOGLE_ADS_CONVERSION, site } from "@/config/site";
@@ -89,13 +88,6 @@ export default function ObrigadoPage() {
           <p className="mt-8 text-sm font-medium text-green">
             Você só paga quando receber.
           </p>
-
-          <Link
-            href="/"
-            className="mt-6 inline-block text-sm font-semibold text-turquoise-dark underline-offset-4 hover:underline"
-          >
-            Voltar para a página inicial
-          </Link>
         </div>
       </main>
 
