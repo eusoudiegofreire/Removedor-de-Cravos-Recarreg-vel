@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, Home, PackageCheck, Wallet } from "lucide-react";
 import { Footer } from "@/components/Footer";
-import { site } from "@/config/site";
+import { GOOGLE_ADS_CONVERSION, site } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Entrega agendada",
@@ -31,6 +31,16 @@ const nextSteps = [
 export default function ObrigadoPage() {
   return (
     <>
+      {/* Google Ads conversion: Pixel - Removedor de manchas conversion page */}
+      <script
+        id="google-ads-conversion"
+        dangerouslySetInnerHTML={{
+          __html: `gtag('event', 'conversion', {
+  'send_to': '${GOOGLE_ADS_CONVERSION}',
+  'transaction_id': ''
+});`,
+        }}
+      />
       <header className="border-b border-border bg-white">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-center px-5 py-4 sm:px-6 lg:px-8">
           <span className="font-heading text-xl font-extrabold tracking-tight text-text">
