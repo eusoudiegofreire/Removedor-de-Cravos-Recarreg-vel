@@ -384,9 +384,6 @@ export function ExitIntentPopup({
             >
               {phase === "spinning" ? popupCopy.spinningLabel : popupCopy.spinLabel}
             </button>
-            <p className="mt-3 text-xs leading-relaxed text-text-secondary">
-              {popupCopy.wheelNote}
-            </p>
           </div>
         )}
       </div>

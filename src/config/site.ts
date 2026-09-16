@@ -172,8 +172,8 @@ export const paymentNote = "Pagamento na entrega: dinheiro, Pix ou cartão.";
 
 /**
  * Exit-intent popup. The wheel is a visual device only: every spin unlocks the
- * same 10%, and the copy says so out loud. Segments that are not the discount
- * show real attributes of this offer, never a bigger prize we don't grant.
+ * same 10%. Segments that are not the discount show real attributes of this
+ * offer, never a bigger prize we don't grant.
  */
 export type WheelSegment = {
   label: string;
@@ -195,7 +195,6 @@ export const popup = {
     "Gire a roleta e desbloqueie seu cupom para agendar sua entrega agora.",
   spinLabel: "Girar roleta",
   spinningLabel: "Girando...",
-  wheelNote: "Todos os giros desbloqueiam o mesmo desconto de 10%.",
   wonTitle: "Parabéns! Você desbloqueou 10% de desconto.",
   couponLabel: "Seu cupom",
   coupon: "ENTREGA10",
