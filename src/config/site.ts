@@ -2,8 +2,8 @@ export const SITE_URL = "https://www.amazole.com.br";
 
 export const CTA_LINK = "https://entrega.logzz.com.br/pay/de-r-14990-por-r-12700";
 
-export const GOOGLE_ADS_ID = "AW-482643445";
-export const GOOGLE_ADS_CONVERSION = `${GOOGLE_ADS_ID}/l-dXCPr-7fkcEPWbkuYB`;
+export const GOOGLE_ADS_ID = "AW-18455497981";
+export const GOOGLE_ADS_CONVERSION = `${GOOGLE_ADS_ID}/waOcCMbCufocEP2ZouBE`;
 
 export const site = {
   name: "Amazolé",
