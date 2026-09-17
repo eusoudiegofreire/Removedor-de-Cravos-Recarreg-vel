@@ -5,6 +5,8 @@ export const CTA_LINK = "https://entrega.logzz.com.br/pay/de-r-14990-por-r-12700
 export const GOOGLE_ADS_ID = "AW-18455497981";
 export const GOOGLE_ADS_CONVERSION = `${GOOGLE_ADS_ID}/waOcCMbCufocEP2ZouBE`;
 
+export const GTM_ID = "GTM-KT5JSDQP";
+
 export const site = {
   name: "Amazolé",
   productName: "Clareador de Manchas Esfoliante Corporal",
