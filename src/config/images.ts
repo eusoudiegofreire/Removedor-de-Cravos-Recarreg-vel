@@ -29,7 +29,7 @@ export const ativosImage: ProductImage = {
 export const entregaImage: ProductImage = {
   src: "/images/amazole/entrega-e-pagamento.webp",
   width: 1200,
-  height: 1172,
+  height: 1173,
   alt: "Entrega e pagamento na entrega do Clareador de Manchas",
 };
 
