@@ -8,8 +8,8 @@ export type ProductImage = {
 export const heroImage: ProductImage = {
   src: "/images/amazole/hero-principal.webp",
   width: 1200,
-  height: 800,
-  alt: "Clareador de Manchas Esfoliante Corporal",
+  height: 900,
+  alt: "Antes e depois com o Clareador de Manchas",
 };
 
 export const texturaImage: ProductImage = {
