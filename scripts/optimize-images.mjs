@@ -7,7 +7,7 @@ const OUT_DIR = join(process.cwd(), "public", "images", "amazole");
 
 const RENAME = {
   "heroo.png": ["hero-principal", 1200],
-  "Textura do creme.png": ["textura-do-creme", 1200],
+  "Textura do creme (2).png": ["textura-do-creme", 1200],
   "Ativos naturais.png": ["ativos-naturais", 1200],
   "Entrega e pagamento.png": ["entrega-e-pagamento", 1200],
   "imagem da oferta (2).png": ["imagem-da-oferta", 900],
