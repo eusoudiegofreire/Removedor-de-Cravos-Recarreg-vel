@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/Button";
 import { PhotoCard } from "@/components/ui/PhotoCard";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { resultadosImages, type ProductImage } from "@/config/images";
@@ -6,12 +7,19 @@ type ResultadosProps = {
   title?: string;
   text?: string;
   images?: ProductImage[];
+  /** Rendered as a CTA under the gallery only when both are provided. */
+  ctaLabel?: string;
+  ctaLink?: string;
+  ctaNote?: string;
 };
 
 export function Resultados({
   title = "Resultados reais de quem usou",
   text = "Veja registros reais de uso do produto. Os resultados podem variar conforme o tipo de pele, frequência de uso e rotina de cuidados.",
   images = resultadosImages,
+  ctaLabel,
+  ctaLink,
+  ctaNote,
 }: ResultadosProps = {}) {
   return (
     <Section>
@@ -31,6 +39,17 @@ export function Resultados({
           />
         ))}
       </div>
+
+      {ctaLabel && ctaLink ? (
+        <div className="reveal mx-auto mt-10 flex flex-col items-center gap-3 text-center">
+          <Button href={ctaLink} size="lg">
+            {ctaLabel}
+          </Button>
+          {ctaNote ? (
+            <p className="text-sm font-medium text-green">{ctaNote}</p>
+          ) : null}
+        </div>
+      ) : null}
     </Section>
   );
 }

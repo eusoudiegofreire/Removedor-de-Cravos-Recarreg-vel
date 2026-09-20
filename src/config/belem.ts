@@ -2,25 +2,21 @@ import { CTA_LINK, type FaqItem, popup } from "@/config/site";
 
 export const belem = {
   city: "Belém",
-  ctaLabel: "Agendar minha entrega em Belém",
+  ctaLabel: "Agendar minha entrega",
   ctaLink: CTA_LINK,
 };
 
+/** Not rendered on this reorganized page (kept in case it's re-enabled later). */
 export const popupBelem = {
   ...popup,
   coupon: "BELEM10",
   ctaLabel: "Agendar minha entrega em Belém com desconto",
 };
 
-export const heroBulletsBelem = [
-  "Clareador esfoliante corporal",
-  "Para axilas, virilhas, joelhos e cotovelos",
-  "Indicado para cuidado de áreas escurecidas",
-  "Dermatologicamente testado",
-  "Hipoalergênico",
-  "Livre de parabenos",
-  "Produto adulto +18",
-  "Pague somente quando receber em Belém",
+export const heroPriceNoteBelem = [
+  "1 unidade de 200g",
+  "Frete grátis em Belém",
+  "Dinheiro, Pix ou cartão na entrega",
 ];
 
 export const areasBelem = [
@@ -32,47 +28,38 @@ export const areasBelem = [
   "Marcas relacionadas à foliculite",
 ];
 
-export const trustStepsBelem = [
-  "Entrega em Belém",
-  "Sem pagamento antecipado",
-  "Pague ao receber",
-  "Dinheiro, Pix ou cartão",
-];
-
 export const ofertaIncludesBelem = [
-  "1 unidade Clareador de Manchas 200g",
-  "Produto dermatologicamente testado",
-  "Hipoalergênico",
-  "Livre de parabenos",
-  "Pagamento somente na entrega em Belém",
-  "Dinheiro, Pix ou cartão",
+  "1 unidade de 200g",
+  "Frete grátis em Belém",
+  "Entrega em 24 horas úteis",
+  "Pagamento somente na entrega",
 ];
 
 export const faqItemsBelem: FaqItem[] = [
   {
-    question: "Preciso pagar antes?",
-    answer: "Não. O pagamento é feito somente na entrega.",
+    question: "Preciso pagar antecipadamente?",
+    answer: "Não. Você paga somente quando receber o produto.",
   },
   {
-    question: "A entrega é em Belém?",
-    answer: "Sim. A entrega é feita em Belém, no endereço informado no agendamento.",
+    question: "O frete é grátis?",
+    answer: "Sim. A entrega em Belém tem frete grátis.",
   },
   {
-    question: "Quais formas de pagamento são aceitas?",
-    answer: "Dinheiro, Pix ou cartão.",
+    question: "Qual é o prazo de entrega?",
+    answer: "A entrega é feita em 24 horas úteis.",
   },
   {
-    question: "O produto é clareador?",
-    answer: "Sim. É um clareador de manchas esfoliante para o corpo.",
+    question: "Quais são as formas de pagamento?",
+    answer: "Dinheiro, Pix ou cartão, no momento da entrega.",
   },
   {
-    question: "Pode usar em quais áreas?",
+    question: "Como faço o agendamento?",
     answer:
-      "Pode ser usado em áreas como axilas, virilhas, joelhos e cotovelos, seguindo as instruções da embalagem.",
+      "Clique em “Agendar minha entrega” e preencha seus dados na Logzz. Ao concluir, você será direcionado à página de confirmação.",
   },
   {
-    question: "Tem proteção solar?",
-    answer: "Não. Se usar durante o dia em área exposta, aplique protetor solar.",
+    question: "Qual quantidade vou receber?",
+    answer: "Uma unidade de 200g por R$ 127,00.",
   },
   {
     question: "É dermatologicamente testado?",
@@ -85,9 +72,5 @@ export const faqItemsBelem: FaqItem[] = [
   {
     question: "É livre de parabenos?",
     answer: "Sim.",
-  },
-  {
-    question: "Qual o tamanho do produto?",
-    answer: "200g.",
   },
 ];
