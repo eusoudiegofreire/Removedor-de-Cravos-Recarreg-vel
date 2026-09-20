@@ -42,7 +42,7 @@ export default function ObrigadoPage() {
       />
       <header className="border-b border-border bg-white">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-center px-5 py-4 sm:px-6 lg:px-8">
-          <span className="font-heading text-xl font-extrabold tracking-tight text-text">
+          <span className="font-heading text-xl font-bold tracking-tight text-text">
             Amazol<span className="text-turquoise">é</span>
           </span>
         </div>
@@ -58,7 +58,7 @@ export default function ObrigadoPage() {
             Agendamento confirmado
           </p>
 
-          <h1 className="mt-4 text-3xl font-extrabold leading-tight text-text sm:text-4xl">
+          <h1 className="mt-4 text-3xl font-bold leading-tight text-text sm:text-4xl">
             Parabéns! Sua entrega foi agendada.
           </h1>
 

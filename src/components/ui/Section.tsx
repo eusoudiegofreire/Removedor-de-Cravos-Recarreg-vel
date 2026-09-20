@@ -56,7 +56,7 @@ export function SectionHeading({
           <Eyebrow tone={eyebrowTone}>{eyebrow}</Eyebrow>
         </div>
       ) : null}
-      <h2 className="mt-4 text-2xl font-extrabold leading-tight text-text sm:text-3xl lg:text-4xl">
+      <h2 className="mt-4 text-2xl font-bold leading-tight text-text sm:text-3xl lg:text-4xl">
         {title}
       </h2>
       {text ? (

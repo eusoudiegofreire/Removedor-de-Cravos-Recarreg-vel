@@ -4,11 +4,17 @@ import { site } from "@/config/site";
 type StickyMobileCtaProps = {
   ctaLabel?: string;
   ctaLink?: string;
+  ctaVariant?: "primary" | "secondary";
+  priceLine?: string;
+  priceSubLine?: string;
 };
 
 export function StickyMobileCta({
   ctaLabel = site.ctaLabel,
   ctaLink = site.ctaLink,
+  ctaVariant = "primary",
+  priceLine = "R$ 127,00",
+  priceSubLine = "De R$ 149,90 por",
 }: StickyMobileCtaProps = {}) {
   return (
     <div
@@ -17,10 +23,10 @@ export function StickyMobileCta({
     >
       <div className="flex items-center justify-between gap-3">
         <div className="leading-tight">
-          <p className="text-[11px] text-text-secondary">De R$ 149,90 por</p>
-          <p className="font-heading text-lg font-extrabold text-text">R$ 127,00</p>
+          <p className="text-sm text-text-secondary">{priceSubLine}</p>
+          <p className="font-heading text-lg font-bold text-text">{priceLine}</p>
         </div>
-        <Button href={ctaLink} variant="primary" size="md" className="flex-1">
+        <Button href={ctaLink} variant={ctaVariant} size="md" className="flex-1">
           {ctaLabel}
         </Button>
       </div>

@@ -13,9 +13,11 @@ import { StickyMobileCta } from "@/components/StickyMobileCta";
 import { SITE_URL, site } from "@/config/site";
 import {
   belem,
+  ctaLabelsBelem,
   faqItemsBelem,
   heroPriceNoteBelem,
   ofertaIncludesBelem,
+  pricingBelem,
 } from "@/config/belem";
 
 const title = `${site.productName} com entrega em Belém`;
@@ -74,57 +76,76 @@ export default function BelemPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Header ctaLabel={belem.ctaLabel} ctaLink={belem.ctaLink} mobileLabel="Agendar" />
-      <main className="pb-24 sm:pb-0">
-        <Hero
-          layout="compact"
-          headline="Clareador de Manchas 200g com entrega em Belém"
-          subheadline="Agende sua entrega com frete grátis e receba em 24 horas úteis. Pague somente quando o produto chegar."
-          bullets={[]}
-          priceNote={heroPriceNoteBelem}
-          trustLine=""
-          ctaLabel={belem.ctaLabel}
-          ctaLink={belem.ctaLink}
-          paymentNote="Na próxima etapa, preencha seus dados na Logzz para concluir o agendamento. Você não paga agora."
-        />
+      <Header
+        ctaLabel={ctaLabelsBelem.header}
+        ctaLink={belem.ctaLink}
+        mobileLabel={ctaLabelsBelem.headerMobile}
+        variant="secondary"
+      />
+      <div className="compact-sections">
+        <main className="pb-24 sm:pb-0">
+          <Hero
+            layout="compact"
+            headline="Clareador corporal de manchas — 200g"
+            subheadline="Entrega em Belém com frete grátis, em 24 horas úteis."
+            bullets={[]}
+            priceNote={heroPriceNoteBelem}
+            installments={pricingBelem}
+            trustLine=""
+            ctaLabel={ctaLabelsBelem.hero}
+            ctaLink={belem.ctaLink}
+            ctaVariant="secondary"
+            paymentNote="Preencha seus dados na próxima etapa. Você não paga agora."
+          />
 
-        <Depoimentos
-          title="Depoimentos de clientes"
-          text="Veja mensagens reais de clientes que receberam o produto em Belém. Toque em um print para ampliar."
-          enlargeOnTap
-        />
+          <Depoimentos
+            title="Depoimentos de clientes"
+            text="Veja mensagens de clientes que compartilharam sua experiência."
+            enlargeOnTap
+          />
 
-        <Resultados
-          title="Resultados reais de quem usou o Clareador de Manchas"
-          ctaLabel={belem.ctaLabel}
-          ctaLink={belem.ctaLink}
-          ctaNote="Frete grátis em Belém. Pagamento somente na entrega."
-        />
+          <Resultados
+            title="Resultados reais de quem usou o Clareador de Manchas"
+            ctaLabel={ctaLabelsBelem.resultados}
+            ctaLink={belem.ctaLink}
+            ctaVariant="secondary"
+            ctaNote="Frete grátis em Belém. Pagamento somente na entrega."
+          />
 
-        <ComoFuncionaEntrega />
+          <ComoFuncionaEntrega />
 
-        <Oferta
-          title="Garanta o seu Clareador de Manchas em Belém"
-          includes={ofertaIncludesBelem}
-          ctaLabel={belem.ctaLabel}
-          ctaLink={belem.ctaLink}
-          footnote="Você paga somente quando receber."
-        />
+          <Oferta
+            title="Garanta o seu Clareador de Manchas em Belém"
+            includes={ofertaIncludesBelem}
+            installments={pricingBelem}
+            ctaLabel={ctaLabelsBelem.oferta}
+            ctaLink={belem.ctaLink}
+            ctaVariant="secondary"
+            footnote="Você paga somente quando receber."
+          />
 
-        <InformacoesComplementares />
+          <InformacoesComplementares />
 
-        <Faq items={faqItemsBelem} />
+          <Faq items={faqItemsBelem} />
 
-        <CtaFinal
-          title="Agende sua entrega em Belém"
-          text="Clareador de Manchas Esfoliante Corporal 200g. Frete grátis em Belém e entrega em 24 horas úteis."
-          ctaLabel={belem.ctaLabel}
-          ctaLink={belem.ctaLink}
-          footnote="Pagamento somente na entrega: dinheiro, Pix ou cartão."
-        />
-      </main>
+          <CtaFinal
+            title="Agende sua entrega em Belém"
+            text="Clareador de Manchas Esfoliante Corporal 200g. Frete grátis em Belém e entrega em 24 horas úteis."
+            priceLabel="R$ 127,00 à vista"
+            ctaLabel={ctaLabelsBelem.fechamento}
+            ctaLink={belem.ctaLink}
+            footnote="Pagamento somente na entrega: dinheiro, Pix ou cartão."
+          />
+        </main>
+      </div>
       <Footer />
-      <StickyMobileCta ctaLabel={belem.ctaLabel} ctaLink={belem.ctaLink} />
+      <StickyMobileCta
+        ctaLabel={ctaLabelsBelem.stickyMobile}
+        ctaLink={belem.ctaLink}
+        ctaVariant="secondary"
+        priceLine="R$ 127,00 à vista"
+        priceSubLine="Pague na entrega"
+      />
     </>
   );
 }

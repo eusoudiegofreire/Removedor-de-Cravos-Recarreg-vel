@@ -85,7 +85,7 @@ export function InformacoesComplementares({
           </ol>
           <div className="mt-4 flex items-start gap-2.5 rounded-card bg-magenta-soft p-3">
             <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-magenta-dark" />
-            <p className="text-xs leading-relaxed text-magenta-dark">
+            <p className="text-sm leading-relaxed text-magenta-dark">
               Use conforme as instruções da embalagem. Em caso de sensibilidade,
               suspenda o uso.
             </p>

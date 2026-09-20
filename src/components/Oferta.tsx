@@ -1,6 +1,7 @@
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { PhotoCard } from "@/components/ui/PhotoCard";
+import { PriceInstallments, type InstallmentInfo } from "@/components/ui/PriceInstallments";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { site } from "@/config/site";
 import { ofertaImage } from "@/config/images";
@@ -20,7 +21,10 @@ type OfertaProps = {
   includes?: string[];
   ctaLabel?: string;
   ctaLink?: string;
+  ctaVariant?: "primary" | "secondary";
   footnote?: string;
+  /** When set, replaces the default "De R$149,90 / R$127,00" block. */
+  installments?: InstallmentInfo;
 };
 
 export function Oferta({
@@ -29,7 +33,9 @@ export function Oferta({
   includes = defaultIncludes,
   ctaLabel = site.ctaLabel,
   ctaLink = site.ctaLink,
+  ctaVariant = "primary",
   footnote = "Você só paga quando receber.",
+  installments,
 }: OfertaProps = {}) {
   return (
     <Section id="oferta">
@@ -61,17 +67,23 @@ export function Oferta({
             ))}
           </ul>
 
-          <div className="mt-6 flex flex-wrap items-end gap-3">
-            <span className="text-base text-text-secondary line-through">
-              De R$ 149,90
-            </span>
-            <span className="font-heading text-3xl font-extrabold text-magenta">
-              R$ 127,00
-            </span>
+          <div className="mt-6">
+            {installments ? (
+              <PriceInstallments info={installments} />
+            ) : (
+              <div className="flex flex-wrap items-end gap-3">
+                <span className="text-base text-text-secondary line-through">
+                  De R$ 149,90
+                </span>
+                <span className="font-heading text-3xl font-bold text-magenta">
+                  R$ 127,00
+                </span>
+              </div>
+            )}
           </div>
 
           <div className="mt-6">
-            <Button href={ctaLink} size="lg" className="w-full sm:w-auto">
+            <Button href={ctaLink} variant={ctaVariant} size="lg" className="w-full sm:w-auto">
               {ctaLabel}
             </Button>
             <p className="mt-3 text-sm font-medium text-green">{footnote}</p>

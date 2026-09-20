@@ -1,9 +1,35 @@
 import { CTA_LINK, type FaqItem, popup } from "@/config/site";
+import type { InstallmentInfo } from "@/components/ui/PriceInstallments";
 
 export const belem = {
   city: "Belém",
-  ctaLabel: "Agendar minha entrega",
   ctaLink: CTA_LINK,
+};
+
+/**
+ * Matches exactly what the Logzz checkout shows for this offer. If the
+ * checkout price ever changes, update only this object — every component
+ * that shows the price/installments reads from here.
+ */
+export const pricingBelem: InstallmentInfo = {
+  count: 12,
+  installmentPrice: "R$ 13,17",
+  cashPrice: "R$ 127,00",
+};
+
+/**
+ * Same action and destination everywhere (pricingBelem.ctaLink) — only the
+ * label changes per section, on purpose, to match how each section frames
+ * the ask.
+ */
+export const ctaLabelsBelem = {
+  header: "Fazer meu pedido",
+  headerMobile: "Fazer pedido",
+  hero: "Quero receber e pagar na entrega",
+  resultados: "Pedir meu clareador",
+  oferta: "Agendar minha entrega",
+  fechamento: "Fazer meu pedido",
+  stickyMobile: "Fazer pedido",
 };
 
 /** Not rendered on this reorganized page (kept in case it's re-enabled later). */
@@ -14,9 +40,8 @@ export const popupBelem = {
 };
 
 export const heroPriceNoteBelem = [
-  "1 unidade de 200g",
+  "Pagamento somente na entrega",
   "Frete grátis em Belém",
-  "Dinheiro, Pix ou cartão na entrega",
 ];
 
 export const areasBelem = [

@@ -10,6 +10,7 @@ type ResultadosProps = {
   /** Rendered as a CTA under the gallery only when both are provided. */
   ctaLabel?: string;
   ctaLink?: string;
+  ctaVariant?: "primary" | "secondary";
   ctaNote?: string;
 };
 
@@ -19,6 +20,7 @@ export function Resultados({
   images = resultadosImages,
   ctaLabel,
   ctaLink,
+  ctaVariant = "primary",
   ctaNote,
 }: ResultadosProps = {}) {
   return (
@@ -42,7 +44,7 @@ export function Resultados({
 
       {ctaLabel && ctaLink ? (
         <div className="reveal mx-auto mt-10 flex flex-col items-center gap-3 text-center">
-          <Button href={ctaLink} size="lg">
+          <Button href={ctaLink} variant={ctaVariant} size="lg">
             {ctaLabel}
           </Button>
           {ctaNote ? (

@@ -260,7 +260,7 @@ export function ExitIntentPopup({
 
           <h2
             id="exit-popup-title"
-            className="mt-4 font-heading text-xl font-extrabold leading-tight text-text sm:text-2xl"
+            className="mt-4 font-heading text-xl font-bold leading-tight text-text sm:text-2xl"
           >
             {phase === "won" ? popupCopy.wonTitle : title}
           </h2>
@@ -299,7 +299,7 @@ export function ExitIntentPopup({
           </div>
 
           <div className="absolute left-1/2 top-1/2 z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-magenta bg-white">
-            <span className="font-heading text-sm font-extrabold text-magenta">
+            <span className="font-heading text-sm font-bold text-magenta">
               10%
             </span>
           </div>
@@ -311,7 +311,7 @@ export function ExitIntentPopup({
               <p className="text-xs font-semibold uppercase tracking-wide text-text-secondary">
                 {popupCopy.couponLabel}
               </p>
-              <p className="mt-1 font-heading text-2xl font-extrabold tracking-[0.2em] text-magenta">
+              <p className="mt-1 font-heading text-2xl font-bold tracking-[0.2em] text-magenta">
                 {coupon}
               </p>
               <button

@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="bg-text py-10 text-white/70">
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8">
-        <span className="font-heading text-lg font-extrabold text-white">
+        <span className="font-heading text-lg font-bold text-white">
           Amazol<span className="text-turquoise">é</span>
         </span>
 

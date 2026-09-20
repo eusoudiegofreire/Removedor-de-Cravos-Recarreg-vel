@@ -15,9 +15,6 @@
   --color-text-secondary: #666666;
   --color-border: #e8e2d6;
 
-  --font-heading: var(--font-manrope);
-  --font-body: var(--font-inter);
-
   --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -36,8 +33,11 @@
   --color-text-secondary: var(--color-text-secondary);
   --color-border: var(--color-border);
 
-  --font-heading: var(--font-heading);
-  --font-body: var(--font-body);
+  /* Points directly at the loaded font variable — no self-referencing
+     intermediate token (that pattern silently breaks if :root's copy of
+     the same custom property ever stops being declared after @theme). */
+  --font-heading: var(--font-inter);
+  --font-body: var(--font-inter);
 
   --radius-card: 20px;
   --radius-button: 999px;
@@ -82,19 +82,19 @@ h4 {
     animation-range: entry 0% cover 25%;
   }
 
-  /* Load-time entrance for above-the-fold content (hero, sticky CTA bar). */
+  /* Load-time entrance for above-the-fold content (hero, sticky CTA bar).
+     No blur: it briefly hurts legibility of headings/prices/CTAs while
+     mid-transition, so this only animates opacity + position. */
   .enter {
     transition:
       opacity 0.6s var(--ease-snappy),
-      transform 0.6s var(--ease-snappy),
-      filter 0.6s var(--ease-snappy);
+      transform 0.6s var(--ease-snappy);
   }
 
   @starting-style {
     .enter {
       opacity: 0;
       transform: translateY(12px);
-      filter: blur(6px);
     }
   }
 
@@ -114,12 +114,10 @@ h4 {
   from {
     opacity: 0;
     transform: translateY(16px);
-    filter: blur(6px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0px);
   }
 }
 
@@ -129,5 +127,27 @@ h4 {
   }
   to {
     box-shadow: 0 8px 24px -16px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* Opt-in tighter section rhythm (used only where explicitly wrapped —
+   the shared Section/CtaFinal/Hero markup and the general page are
+   untouched by default). */
+.compact-sections section {
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
+}
+
+@media (min-width: 640px) {
+  .compact-sections section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .compact-sections section {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
   }
 }

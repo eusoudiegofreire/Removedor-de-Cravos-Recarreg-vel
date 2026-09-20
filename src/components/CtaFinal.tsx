@@ -7,6 +7,8 @@ type CtaFinalProps = {
   ctaLabel?: string;
   ctaLink?: string;
   footnote?: string;
+  /** Replaces the "De R$149,90 / R$127,00" block with a single simple label. */
+  priceLabel?: string;
 };
 
 export function CtaFinal({
@@ -15,11 +17,12 @@ export function CtaFinal({
   ctaLabel = site.ctaLabel,
   ctaLink = site.ctaLink,
   footnote = "Pagamento somente na entrega: dinheiro, Pix ou cartão.",
+  priceLabel,
 }: CtaFinalProps = {}) {
   return (
     <section className="bg-gradient-to-br from-turquoise to-turquoise-dark py-16 sm:py-20">
       <div className="mx-auto flex w-full max-w-3xl flex-col items-center px-5 text-center sm:px-6">
-        <h2 className="font-heading text-2xl font-extrabold text-white sm:text-3xl lg:text-4xl">
+        <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
           {title}
         </h2>
 
@@ -27,12 +30,18 @@ export function CtaFinal({
           {text}
         </p>
 
-        <div className="mt-6 flex flex-wrap items-end justify-center gap-3">
-          <span className="text-base text-white/70 line-through">De R$ 149,90</span>
-          <span className="font-heading text-3xl font-extrabold text-white sm:text-4xl">
-            R$ 127,00
-          </span>
-        </div>
+        {priceLabel ? (
+          <p className="mt-6 font-heading text-3xl font-bold text-white sm:text-4xl">
+            {priceLabel}
+          </p>
+        ) : (
+          <div className="mt-6 flex flex-wrap items-end justify-center gap-3">
+            <span className="text-base text-white/70 line-through">De R$ 149,90</span>
+            <span className="font-heading text-3xl font-bold text-white sm:text-4xl">
+              R$ 127,00
+            </span>
+          </div>
+        )}
 
         <div className="mt-8">
           <Button href={ctaLink} variant="secondary" size="lg">

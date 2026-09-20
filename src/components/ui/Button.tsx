@@ -10,7 +10,7 @@ type ButtonProps = {
 };
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-button font-heading font-bold text-center transition-[background-color,color,border-color,box-shadow,translate,scale] duration-200 ease-snappy hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] active:duration-100";
+  "inline-flex items-center justify-center gap-2 rounded-button font-heading font-semibold text-center transition-[background-color,color,border-color,box-shadow,translate,scale] duration-200 ease-snappy hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] active:duration-100";
 
 const variants: Record<NonNullable<ButtonProps["variant"]>, string> = {
   primary:
@@ -22,7 +22,7 @@ const variants: Record<NonNullable<ButtonProps["variant"]>, string> = {
 };
 
 const sizes: Record<NonNullable<ButtonProps["size"]>, string> = {
-  md: "px-6 py-3 text-sm sm:text-base",
+  md: "px-6 py-3 text-base",
   lg: "px-8 py-4 text-base sm:text-lg",
 };
 
