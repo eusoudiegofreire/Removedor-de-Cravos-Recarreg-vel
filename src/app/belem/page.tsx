@@ -9,7 +9,6 @@ import { Hero } from "@/components/Hero";
 import { InformacoesComplementares } from "@/components/InformacoesComplementares";
 import { Oferta } from "@/components/Oferta";
 import { Resultados } from "@/components/Resultados";
-import { StickyMobileCta } from "@/components/StickyMobileCta";
 import { SITE_URL, site } from "@/config/site";
 import {
   belem,
@@ -76,17 +75,12 @@ export default function BelemPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Header
-        ctaLabel={ctaLabelsBelem.header}
-        ctaLink={belem.ctaLink}
-        mobileLabel={ctaLabelsBelem.headerMobile}
-        variant="secondary"
-      />
+      <Header showCta={false} />
       <div className="compact-sections">
-        <main className="pb-24 sm:pb-0">
+        <main>
           <Hero
             layout="compact"
-            headline="Clareador corporal de manchas — 200g"
+            headline="Clareador corporal para áreas escurecidas e manchas na pele"
             subheadline="Entrega em Belém com frete grátis, em 24 horas úteis."
             bullets={[]}
             priceNote={heroPriceNoteBelem}
@@ -139,13 +133,6 @@ export default function BelemPage() {
         </main>
       </div>
       <Footer />
-      <StickyMobileCta
-        ctaLabel={ctaLabelsBelem.stickyMobile}
-        ctaLink={belem.ctaLink}
-        ctaVariant="secondary"
-        priceLine="R$ 127,00 à vista"
-        priceSubLine="Pague na entrega"
-      />
     </>
   );
 }

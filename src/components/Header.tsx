@@ -6,6 +6,7 @@ type HeaderProps = {
   ctaLink?: string;
   mobileLabel?: string;
   variant?: "primary" | "secondary";
+  showCta?: boolean;
 };
 
 export function Header({
@@ -13,6 +14,7 @@ export function Header({
   ctaLink = site.ctaLink,
   mobileLabel = "Agendar",
   variant = "primary",
+  showCta = true,
 }: HeaderProps = {}) {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-white/90 backdrop-blur">
@@ -20,16 +22,20 @@ export function Header({
         <span className="font-heading text-xl font-bold tracking-tight text-text">
           Amazol<span className="text-turquoise">é</span>
         </span>
-        <div className="hidden sm:block">
-          <Button href={ctaLink} variant={variant} size="md">
-            {ctaLabel}
-          </Button>
-        </div>
-        <div className="sm:hidden">
-          <Button href={ctaLink} variant={variant} size="md">
-            {mobileLabel}
-          </Button>
-        </div>
+        {showCta ? (
+          <>
+            <div className="hidden sm:block">
+              <Button href={ctaLink} variant={variant} size="md">
+                {ctaLabel}
+              </Button>
+            </div>
+            <div className="sm:hidden">
+              <Button href={ctaLink} variant={variant} size="md">
+                {mobileLabel}
+              </Button>
+            </div>
+          </>
+        ) : null}
       </div>
     </header>
   );
