@@ -41,9 +41,9 @@ export function Hero({
   const compact = layout === "compact";
 
   return (
-    <section className="bg-offwhite">
+    <section className="bg-offwhite py-12 sm:py-16 lg:py-20">
       <div
-        className={`mx-auto grid w-full max-w-6xl grid-cols-1 items-center px-5 py-12 sm:px-6 sm:py-16 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-20 ${
+        className={`mx-auto grid w-full max-w-6xl grid-cols-1 items-center px-5 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8 ${
           compact ? "gap-6" : "gap-10"
         }`}
       >
