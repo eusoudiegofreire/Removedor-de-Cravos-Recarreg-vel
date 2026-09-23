@@ -88,7 +88,7 @@ export default function CuritibaPage() {
             subheadline="Agende sua entrega pelo site e pague somente quando receber. Para cuidados com axilas, virilhas, joelhos e cotovelos."
             bullets={[]}
             priceNote={heroPriceNoteCuritiba}
-            installments={pricingCuritiba}
+            showPrice={false}
             trustLine="Seu agendamento é confirmado por WhatsApp antes do envio."
             ctaLabel={ctaLabelsCuritiba.hero}
             ctaLink={`#${FORM_ANCHOR}`}

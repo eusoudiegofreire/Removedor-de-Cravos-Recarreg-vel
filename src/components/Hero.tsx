@@ -14,6 +14,8 @@ type HeroProps = {
   priceNote?: string[];
   /** When set, replaces the default "De R$149,90 / R$127,00" block. */
   installments?: InstallmentInfo;
+  /** Hides the whole price block — for pages where the ad creative already shows the price. Defaults to true, preserving every existing page. */
+  showPrice?: boolean;
   /** Omitted when empty — the compact layout leans on priceNote instead. */
   trustLine?: string;
   ctaLabel?: string;
@@ -31,6 +33,7 @@ export function Hero({
   bullets = heroBullets,
   priceNote = [],
   installments,
+  showPrice = true,
   trustLine = "Você recebe primeiro e paga somente quando o produto chegar.",
   ctaLabel = site.ctaLabel,
   ctaLink = site.ctaLink,
@@ -71,23 +74,29 @@ export function Hero({
             </ul>
           ) : null}
 
-          <div className={compact ? "mt-5" : "mt-7"}>
-            {installments ? (
-              <PriceInstallments info={installments} />
-            ) : (
-              <div className="flex flex-wrap items-end gap-3">
-                <span className="text-base text-text-secondary line-through">
-                  De R$ 149,90
-                </span>
-                <span className="font-heading text-3xl font-bold text-magenta sm:text-4xl">
-                  R$ 127,00
-                </span>
-              </div>
-            )}
-          </div>
+          {showPrice ? (
+            <div className={compact ? "mt-5" : "mt-7"}>
+              {installments ? (
+                <PriceInstallments info={installments} />
+              ) : (
+                <div className="flex flex-wrap items-end gap-3">
+                  <span className="text-base text-text-secondary line-through">
+                    De R$ 149,90
+                  </span>
+                  <span className="font-heading text-3xl font-bold text-magenta sm:text-4xl">
+                    R$ 127,00
+                  </span>
+                </div>
+              )}
+            </div>
+          ) : null}
 
           {priceNote.length > 0 ? (
-            <ul className="mt-3 flex flex-wrap gap-2">
+            <ul
+              className={`flex flex-wrap gap-2 ${
+                showPrice ? "mt-3" : compact ? "mt-5" : "mt-7"
+              }`}
+            >
               {priceNote.map((item) => (
                 <li
                   key={item}
@@ -101,7 +110,13 @@ export function Hero({
           ) : null}
 
           {trustLine ? (
-            <p className="mt-2 text-sm font-medium text-green">{trustLine}</p>
+            <p
+              className={`text-sm font-medium text-green ${
+                priceNote.length > 0 ? "mt-2" : showPrice ? "mt-2" : compact ? "mt-5" : "mt-7"
+              }`}
+            >
+              {trustLine}
+            </p>
           ) : null}
 
           <div className="mt-6">
