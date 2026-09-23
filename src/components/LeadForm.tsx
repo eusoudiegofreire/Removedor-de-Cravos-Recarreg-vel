@@ -137,32 +137,41 @@ export function LeadForm() {
     setIsSubmitting(true);
     setSubmitError(null);
 
-    const result = await submitCuritibaLead({
-      name: form.name.trim(),
-      phone: form.phone,
-      document: CPF_FIELD_ENABLED && form.document.trim() ? form.document : null,
-      zipCode: form.zipCode,
-      street: form.street,
-      number: form.number,
-      district: form.district,
-      complement: form.complement,
-      ...utm,
-      pageUrl: window.location.href,
-    });
+    try {
+      const result = await submitCuritibaLead({
+        name: form.name.trim(),
+        phone: form.phone,
+        document: CPF_FIELD_ENABLED && form.document.trim() ? form.document : null,
+        zipCode: form.zipCode,
+        street: form.street,
+        number: form.number,
+        district: form.district,
+        complement: form.complement,
+        ...utm,
+        pageUrl: window.location.href,
+      });
 
-    setIsSubmitting(false);
+      if (!result.ok) {
+        setSubmitError(result.message);
+        return;
+      }
 
-    if (!result.ok) {
-      setSubmitError(result.message);
-      return;
+      track("lead_solicitado_curitiba", {
+        city: "Curitiba",
+        product: "clareador_manchas_200g",
+        value: 127,
+      });
+      setSuccess(true);
+    } catch {
+      // Covers a dropped connection or a stale Server Action reference from a
+      // deploy that happened while this tab was already open — either way,
+      // fail loud instead of leaving the button stuck on "Enviando...".
+      setSubmitError(
+        "Não conseguimos enviar sua solicitação agora. Atualize a página e tente novamente, ou chame no WhatsApp.",
+      );
+    } finally {
+      setIsSubmitting(false);
     }
-
-    track("lead_solicitado_curitiba", {
-      city: "Curitiba",
-      product: "clareador_manchas_200g",
-      value: 127,
-    });
-    setSuccess(true);
   }
 
   if (success) {
