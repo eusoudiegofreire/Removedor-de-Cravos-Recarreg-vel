@@ -25,7 +25,7 @@ import {
 
 const title = `${PRODUCT_NAME_CURITIBA} em Curitiba`;
 const description =
-  "Faça o agendamento do Clareador de Manchas em Curitiba. Pagamento somente na entrega. Confirmamos seus dados pelo WhatsApp antes do envio.";
+  "Clareador de manchas corporal em Curitiba. Agende sua entrega pelo site, pague somente quando receber e confirme seus dados pelo WhatsApp.";
 
 export const metadata: Metadata = {
   title,
@@ -84,8 +84,8 @@ export default function CuritibaPage() {
         <main>
           <Hero
             layout="compact"
-            headline="Ajude a clarear manchas e áreas escurecidas da pele, com entrega em Curitiba"
-            subheadline="Clareador de Manchas 200g. Pague somente na entrega."
+            headline="Clareador corporal para manchas e áreas escurecidas, com entrega em Curitiba"
+            subheadline="Agende sua entrega pelo site e pague somente quando receber. Produto 200g para cuidados com axilas, virilhas, joelhos e cotovelos."
             bullets={[]}
             priceNote={heroPriceNoteCuritiba}
             installments={pricingCuritiba}
