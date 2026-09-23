@@ -33,7 +33,7 @@ export type LeadSubmission = {
 export type LeadResult = { ok: true } | { ok: false; message: string };
 
 const GENERIC_ERROR =
-  "Não conseguimos enviar sua solicitação agora. Tente novamente ou chame no WhatsApp.";
+  "Não conseguimos enviar seu agendamento agora. Tente novamente ou chame no WhatsApp.";
 
 export async function submitCuritibaLead(input: LeadSubmission): Promise<LeadResult> {
   if (
@@ -53,7 +53,7 @@ export async function submitCuritibaLead(input: LeadSubmission): Promise<LeadRes
 
   const webhookUrl = process.env.N8N_WEBHOOK_URL;
   if (!webhookUrl) {
-    console.error("N8N_WEBHOOK_URL não configurada — solicitação de Curitiba não enviada.");
+    console.error("N8N_WEBHOOK_URL não configurada — agendamento de Curitiba não enviado.");
     return { ok: false, message: GENERIC_ERROR };
   }
 
@@ -95,13 +95,13 @@ export async function submitCuritibaLead(input: LeadSubmission): Promise<LeadRes
     });
 
     if (!response.ok) {
-      console.error(`n8n webhook respondeu ${response.status} para a solicitação de Curitiba.`);
+      console.error(`n8n webhook respondeu ${response.status} para o agendamento de Curitiba.`);
       return { ok: false, message: GENERIC_ERROR };
     }
 
     return { ok: true };
   } catch (error) {
-    console.error("Falha ao enviar solicitação de Curitiba para o n8n.", error);
+    console.error("Falha ao enviar agendamento de Curitiba para o n8n.", error);
     return { ok: false, message: GENERIC_ERROR };
   }
 }
