@@ -7,7 +7,7 @@ export const curitiba = {
 };
 
 /** Anchor id the CTAs scroll to instead of linking straight to the Logzz checkout. */
-export const FORM_ANCHOR = "solicitar-entrega";
+export const FORM_ANCHOR = "agendamento";
 
 export const PRODUCT_NAME_CURITIBA = "Clareador de Manchas Amazon Kaps Cicatridiva 200g";
 
@@ -35,13 +35,13 @@ export const INSTALLMENTS_PAYLOAD_LABEL = "12x de R$13,17";
 export const CPF_FIELD_ENABLED = false;
 
 export const ctaLabelsCuritiba = {
-  hero: "Solicitar minha entrega",
-  resultados: "Ver disponibilidade para meu bairro",
-  oferta: "Reservar para Curitiba",
-  fechamento: "Quero receber em Curitiba",
-  formNext: "Continuar",
-  formConfirm: "Confirmar meus dados",
-  formSubmit: "Agendar minha entrega",
+  hero: "Fazer meu agendamento",
+  resultados: "Agendar para meu bairro",
+  oferta: "Agendar entrega em Curitiba",
+  fechamento: "Fazer agendamento agora",
+  formNext: "Continuar agendamento",
+  formConfirm: "Confirmar endereço",
+  formSubmit: "Confirmar meu agendamento",
 };
 
 export const heroPriceNoteCuritiba = ["Pagamento somente na entrega"];
@@ -74,7 +74,7 @@ export const faqItemsCuritiba: FaqItem[] = [
   {
     question: "Como funciona o agendamento em Curitiba?",
     answer:
-      "Você preenche seus dados aqui no site. Nossa equipe confirma tudo pelo WhatsApp antes de agendar a entrega.",
+      "Você preenche seus dados aqui no site. Nossa equipe confirma tudo pelo WhatsApp antes de seguir com a entrega.",
   },
   {
     question: "Vocês entregam no meu bairro?",
