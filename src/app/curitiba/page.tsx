@@ -89,7 +89,7 @@ export default function CuritibaPage() {
             bullets={[]}
             priceNote={heroPriceNoteCuritiba}
             showPrice={false}
-            trustLine="Seu agendamento é confirmado por WhatsApp antes do envio."
+            trustLine=""
             ctaLabel={ctaLabelsCuritiba.hero}
             ctaLink={`#${FORM_ANCHOR}`}
             ctaVariant="secondary"
