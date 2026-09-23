@@ -85,7 +85,7 @@ export default function CuritibaPage() {
           <Hero
             layout="compact"
             headline="Clareador corporal para manchas e áreas escurecidas, com entrega em Curitiba"
-            subheadline="Agende sua entrega pelo site e pague somente quando receber. Produto 200g para cuidados com axilas, virilhas, joelhos e cotovelos."
+            subheadline="Agende sua entrega pelo site e pague somente quando receber. Para cuidados com axilas, virilhas, joelhos e cotovelos."
             bullets={[]}
             priceNote={heroPriceNoteCuritiba}
             installments={pricingCuritiba}
