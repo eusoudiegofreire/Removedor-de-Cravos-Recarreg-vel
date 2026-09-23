@@ -18,6 +18,7 @@ const defaultIncludes = [
 type OfertaProps = {
   eyebrow?: string;
   title?: string;
+  productName?: string;
   includes?: string[];
   ctaLabel?: string;
   ctaLink?: string;
@@ -30,6 +31,7 @@ type OfertaProps = {
 export function Oferta({
   eyebrow = "Oferta",
   title = "Garanta o seu Clareador de Manchas com pagamento na entrega",
+  productName = `${site.productName} ${site.volume}`,
   includes = defaultIncludes,
   ctaLabel = site.ctaLabel,
   ctaLink = site.ctaLink,
@@ -55,7 +57,7 @@ export function Oferta({
 
         <div>
           <h3 className="font-heading text-xl font-bold text-text">
-            {site.productName} {site.volume}
+            {productName}
           </h3>
 
           <ul className="mt-5 space-y-2.5">

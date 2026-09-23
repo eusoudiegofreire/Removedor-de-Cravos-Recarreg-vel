@@ -3,7 +3,8 @@ export type TrackEvent =
   | "roleta_girada"
   | "cupom_copiado"
   | "clique_agendamento_desconto"
-  | "popup_fechado";
+  | "popup_fechado"
+  | "lead_solicitado_curitiba";
 
 type TrackParams = Record<string, string | number | boolean>;
 
