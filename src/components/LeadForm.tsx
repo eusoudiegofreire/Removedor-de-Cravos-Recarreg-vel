@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { CheckCircle2, ShieldCheck } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { CalendarCheck, ShieldCheck, X } from "lucide-react";
 import { submitCuritibaLead } from "@/app/curitiba/actions";
 import {
   CPF_FIELD_ENABLED,
@@ -57,6 +58,7 @@ const labelClass = "text-sm font-semibold text-text";
 const errorClass = "mt-1 text-xs font-medium text-magenta-dark";
 
 export function LeadForm() {
+  const router = useRouter();
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [form, setForm] = useState<FormData>(emptyForm);
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
@@ -83,7 +85,19 @@ export function LeadForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
+  const [showIntroModal, setShowIntroModal] = useState(false);
+
+  useEffect(() => {
+    function showModalWhenFormIsTarget() {
+      if (window.location.hash === `#${FORM_ANCHOR}`) {
+        setShowIntroModal(true);
+      }
+    }
+
+    showModalWhenFormIsTarget();
+    window.addEventListener("hashchange", showModalWhenFormIsTarget);
+    return () => window.removeEventListener("hashchange", showModalWhenFormIsTarget);
+  }, []);
 
   function update<K extends keyof FormData>(key: K, value: string) {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -156,281 +170,292 @@ export function LeadForm() {
         return;
       }
 
-      track("lead_solicitado_curitiba", {
+      track("lead_agendado_curitiba", {
         city: "Curitiba",
         product: "clareador_manchas_200g",
         value: 127,
       });
-      setSuccess(true);
+      router.push("/obrigado");
     } catch {
-      // Covers a dropped connection or a stale Server Action reference from a
-      // deploy that happened while this tab was already open — either way,
-      // fail loud instead of leaving the button stuck on "Enviando...".
       setSubmitError(
-        "Não conseguimos enviar sua solicitação agora. Atualize a página e tente novamente, ou chame no WhatsApp.",
+        "Não conseguimos enviar seu agendamento agora. Atualize a página e tente novamente, ou chame no WhatsApp.",
       );
     } finally {
       setIsSubmitting(false);
     }
   }
 
-  if (success) {
-    return (
-      <div
-        id={FORM_ANCHOR}
-        className="reveal mx-auto max-w-xl rounded-card border border-border bg-white p-8 text-center shadow-sm sm:p-10"
-      >
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-soft">
-          <CheckCircle2 className="h-9 w-9 text-green" strokeWidth={2} />
-        </div>
-        <h3 className="mt-5 font-heading text-xl font-bold text-text sm:text-2xl">
-          Solicitação recebida!
-        </h3>
-        <p className="mt-3 text-sm leading-relaxed text-text-secondary sm:text-base">
-          Vamos confirmar seus dados pelo WhatsApp antes de agendar a entrega.
-        </p>
-      </div>
-    );
-  }
-
   return (
-    <div id={FORM_ANCHOR} className="reveal mx-auto max-w-xl rounded-card border border-border bg-white p-6 shadow-sm sm:p-8">
-      <div className="flex items-center gap-2">
-        {[1, 2, 3].map((n) => (
-          <span
-            key={n}
-            className={`h-1.5 flex-1 rounded-full ${n <= step ? "bg-turquoise" : "bg-border"}`}
-          />
-        ))}
-      </div>
-      <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">
-        Etapa {step} de 3
-      </p>
-
-      {step === 1 ? (
-        <div className="mt-5 space-y-4">
-          <h3 className="font-heading text-lg font-bold text-text">Seus dados de contato</h3>
-
-          <div>
-            <label className={labelClass} htmlFor="lead-name">
-              Nome completo
-            </label>
-            <input
-              id="lead-name"
-              className={inputClass}
-              value={form.name}
-              onChange={(event) => update("name", event.target.value)}
-              autoComplete="name"
-            />
-            {errors.name ? <p className={errorClass}>{errors.name}</p> : null}
-          </div>
-
-          <div>
-            <label className={labelClass} htmlFor="lead-phone">
-              WhatsApp
-            </label>
-            <input
-              id="lead-phone"
-              className={inputClass}
-              value={form.phone}
-              onChange={(event) => update("phone", formatPhoneBR(event.target.value))}
-              inputMode="tel"
-              placeholder="(41) 91234-5678"
-              autoComplete="tel"
-            />
-            {errors.phone ? <p className={errorClass}>{errors.phone}</p> : null}
-          </div>
-
-          {CPF_FIELD_ENABLED ? (
-            <div>
-              <label className={labelClass} htmlFor="lead-document">
-                CPF
-              </label>
-              <input
-                id="lead-document"
-                className={inputClass}
-                value={form.document}
-                onChange={(event) => update("document", formatCPF(event.target.value))}
-                inputMode="numeric"
-                placeholder="000.000.000-00"
-              />
-              <p className="mt-1 text-xs text-text-secondary">
-                Usado apenas para cadastro da entrega, se necessário.
-              </p>
-              {errors.document ? <p className={errorClass}>{errors.document}</p> : null}
+    <>
+      {showIntroModal ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-text/55 px-4 py-6">
+          <div className="relative w-full max-w-md rounded-card bg-white p-6 text-center shadow-xl sm:p-8">
+            <button
+              type="button"
+              onClick={() => setShowIntroModal(false)}
+              className="absolute right-4 top-4 rounded-full p-1 text-text-secondary transition-colors hover:bg-offwhite hover:text-text"
+              aria-label="Fechar aviso de agendamento"
+            >
+              <X className="h-5 w-5" strokeWidth={2} />
+            </button>
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-turquoise/10 text-turquoise">
+              <CalendarCheck className="h-7 w-7" strokeWidth={2} />
             </div>
-          ) : null}
-
-          <button
-            type="button"
-            onClick={goNext}
-            className="w-full rounded-button bg-turquoise px-6 py-3 font-heading text-base font-semibold text-white transition-colors duration-200 ease-snappy hover:bg-turquoise-dark"
-          >
-            {ctaLabelsCuritiba.formNext}
-          </button>
+            <h3 className="mt-4 font-heading text-xl font-bold text-text">
+              Faça seu agendamento agora
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+              Preencha seus dados para agendar a entrega em Curitiba. Você só paga quando receber.
+            </p>
+            <button
+              type="button"
+              onClick={() => setShowIntroModal(false)}
+              className="mt-6 w-full rounded-button bg-magenta px-6 py-3 font-heading text-base font-semibold text-white transition-colors duration-200 ease-snappy hover:bg-magenta-dark"
+            >
+              Começar agendamento
+            </button>
+          </div>
         </div>
       ) : null}
 
-      {step === 2 ? (
-        <div className="mt-5 space-y-4">
-          <h3 className="font-heading text-lg font-bold text-text">Endereço de entrega</h3>
-
-          <div>
-            <label className={labelClass} htmlFor="lead-zip">
-              CEP
-            </label>
-            <input
-              id="lead-zip"
-              className={inputClass}
-              value={form.zipCode}
-              onChange={(event) => update("zipCode", formatCEP(event.target.value))}
-              inputMode="numeric"
-              placeholder="00000-000"
+      <div id={FORM_ANCHOR} className="reveal mx-auto max-w-xl rounded-card border border-border bg-white p-6 shadow-sm sm:p-8">
+        <div className="flex items-center gap-2">
+          {[1, 2, 3].map((n) => (
+            <span
+              key={n}
+              className={`h-1.5 flex-1 rounded-full ${n <= step ? "bg-turquoise" : "bg-border"}`}
             />
-            {errors.zipCode ? <p className={errorClass}>{errors.zipCode}</p> : null}
-          </div>
+          ))}
+        </div>
+        <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-text-secondary">
+          Etapa {step} de 3
+        </p>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-[1fr_120px]">
+        {step === 1 ? (
+          <div className="mt-5 space-y-4">
+            <h3 className="font-heading text-lg font-bold text-text">Dados para o agendamento</h3>
+
             <div>
-              <label className={labelClass} htmlFor="lead-street">
-                Rua
+              <label className={labelClass} htmlFor="lead-name">
+                Nome completo
               </label>
               <input
-                id="lead-street"
+                id="lead-name"
                 className={inputClass}
-                value={form.street}
-                onChange={(event) => update("street", event.target.value)}
-                autoComplete="address-line1"
+                value={form.name}
+                onChange={(event) => update("name", event.target.value)}
+                autoComplete="name"
               />
-              {errors.street ? <p className={errorClass}>{errors.street}</p> : null}
+              {errors.name ? <p className={errorClass}>{errors.name}</p> : null}
             </div>
+
             <div>
-              <label className={labelClass} htmlFor="lead-number">
-                Número
+              <label className={labelClass} htmlFor="lead-phone">
+                WhatsApp
               </label>
               <input
-                id="lead-number"
+                id="lead-phone"
                 className={inputClass}
-                value={form.number}
-                onChange={(event) => update("number", event.target.value)}
-                inputMode="numeric"
+                value={form.phone}
+                onChange={(event) => update("phone", formatPhoneBR(event.target.value))}
+                inputMode="tel"
+                placeholder="(41) 91234-5678"
+                autoComplete="tel"
               />
-              {errors.number ? <p className={errorClass}>{errors.number}</p> : null}
+              {errors.phone ? <p className={errorClass}>{errors.phone}</p> : null}
             </div>
-          </div>
 
-          <div>
-            <label className={labelClass} htmlFor="lead-district">
-              Bairro
-            </label>
-            <input
-              id="lead-district"
-              className={inputClass}
-              value={form.district}
-              onChange={(event) => update("district", event.target.value)}
-            />
-            {errors.district ? <p className={errorClass}>{errors.district}</p> : null}
-          </div>
+            {CPF_FIELD_ENABLED ? (
+              <div>
+                <label className={labelClass} htmlFor="lead-document">
+                  CPF
+                </label>
+                <input
+                  id="lead-document"
+                  className={inputClass}
+                  value={form.document}
+                  onChange={(event) => update("document", formatCPF(event.target.value))}
+                  inputMode="numeric"
+                  placeholder="000.000.000-00"
+                />
+                <p className="mt-1 text-xs text-text-secondary">
+                  Usado apenas para cadastro da entrega, se necessário.
+                </p>
+                {errors.document ? <p className={errorClass}>{errors.document}</p> : null}
+              </div>
+            ) : null}
 
-          <div>
-            <label className={labelClass} htmlFor="lead-complement">
-              Complemento <span className="font-normal text-text-secondary">(opcional)</span>
-            </label>
-            <input
-              id="lead-complement"
-              className={inputClass}
-              value={form.complement}
-              onChange={(event) => update("complement", event.target.value)}
-              placeholder="Apto, bloco, referência..."
-            />
-          </div>
-
-          <p className="text-sm text-text-secondary">Cidade: Curitiba - PR</p>
-
-          <div className="flex gap-3">
-            <button
-              type="button"
-              onClick={goBack}
-              className="rounded-button border border-border bg-white px-6 py-3 font-heading text-base font-semibold text-text transition-colors duration-200 ease-snappy hover:border-turquoise hover:text-turquoise"
-            >
-              Voltar
-            </button>
             <button
               type="button"
               onClick={goNext}
-              className="flex-1 rounded-button bg-turquoise px-6 py-3 font-heading text-base font-semibold text-white transition-colors duration-200 ease-snappy hover:bg-turquoise-dark"
+              className="w-full rounded-button bg-turquoise px-6 py-3 font-heading text-base font-semibold text-white transition-colors duration-200 ease-snappy hover:bg-turquoise-dark"
             >
-              {ctaLabelsCuritiba.formConfirm}
+              {ctaLabelsCuritiba.formNext}
             </button>
           </div>
-        </div>
-      ) : null}
+        ) : null}
 
-      {step === 3 ? (
-        <div className="mt-5 space-y-4">
-          <h3 className="font-heading text-lg font-bold text-text">Confirme seus dados</h3>
+        {step === 2 ? (
+          <div className="mt-5 space-y-4">
+            <h3 className="font-heading text-lg font-bold text-text">Endereço de entrega</h3>
 
-          <div className="space-y-2 rounded-lg bg-offwhite p-4 text-sm text-text">
-            <p>
-              <span className="font-semibold">Produto:</span> Clareador de Manchas 200g
-            </p>
-            <p>
-              <span className="font-semibold">Quantidade:</span> 1 unidade
-            </p>
-            <p>
-              <span className="font-semibold">Valor:</span> {pricingCuritiba.count}x de{" "}
-              {pricingCuritiba.installmentPrice} no cartão ou {pricingCuritiba.cashPrice} à vista
-            </p>
-            <p>
-              <span className="font-semibold">Pagamento:</span> somente na entrega
-            </p>
-            <p>
-              <span className="font-semibold">Cidade:</span> Curitiba - PR
-            </p>
-            <p className="pt-1 text-text-secondary">
-              <span className="font-semibold text-text">Endereço:</span> {form.street}, {form.number}
-              {form.complement ? ` - ${form.complement}` : ""} · {form.district} · CEP {form.zipCode}
-            </p>
-            <p className="text-text-secondary">
-              <span className="font-semibold text-text">Contato:</span> {form.name} · {form.phone}
-            </p>
+            <div>
+              <label className={labelClass} htmlFor="lead-zip">
+                CEP
+              </label>
+              <input
+                id="lead-zip"
+                className={inputClass}
+                value={form.zipCode}
+                onChange={(event) => update("zipCode", formatCEP(event.target.value))}
+                inputMode="numeric"
+                placeholder="00000-000"
+              />
+              {errors.zipCode ? <p className={errorClass}>{errors.zipCode}</p> : null}
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-[1fr_120px]">
+              <div>
+                <label className={labelClass} htmlFor="lead-street">
+                  Rua
+                </label>
+                <input
+                  id="lead-street"
+                  className={inputClass}
+                  value={form.street}
+                  onChange={(event) => update("street", event.target.value)}
+                  autoComplete="address-line1"
+                />
+                {errors.street ? <p className={errorClass}>{errors.street}</p> : null}
+              </div>
+              <div>
+                <label className={labelClass} htmlFor="lead-number">
+                  Número
+                </label>
+                <input
+                  id="lead-number"
+                  className={inputClass}
+                  value={form.number}
+                  onChange={(event) => update("number", event.target.value)}
+                  inputMode="numeric"
+                />
+                {errors.number ? <p className={errorClass}>{errors.number}</p> : null}
+              </div>
+            </div>
+
+            <div>
+              <label className={labelClass} htmlFor="lead-district">
+                Bairro
+              </label>
+              <input
+                id="lead-district"
+                className={inputClass}
+                value={form.district}
+                onChange={(event) => update("district", event.target.value)}
+              />
+              {errors.district ? <p className={errorClass}>{errors.district}</p> : null}
+            </div>
+
+            <div>
+              <label className={labelClass} htmlFor="lead-complement">
+                Complemento <span className="font-normal text-text-secondary">(opcional)</span>
+              </label>
+              <input
+                id="lead-complement"
+                className={inputClass}
+                value={form.complement}
+                onChange={(event) => update("complement", event.target.value)}
+                placeholder="Apto, bloco, referência..."
+              />
+            </div>
+
+            <p className="text-sm text-text-secondary">Cidade: Curitiba - PR</p>
+
+            <div className="flex gap-3">
+              <button
+                type="button"
+                onClick={goBack}
+                className="rounded-button border border-border bg-white px-6 py-3 font-heading text-base font-semibold text-text transition-colors duration-200 ease-snappy hover:border-turquoise hover:text-turquoise"
+              >
+                Voltar
+              </button>
+              <button
+                type="button"
+                onClick={goNext}
+                className="flex-1 rounded-button bg-turquoise px-6 py-3 font-heading text-base font-semibold text-white transition-colors duration-200 ease-snappy hover:bg-turquoise-dark"
+              >
+                {ctaLabelsCuritiba.formConfirm}
+              </button>
+            </div>
           </div>
+        ) : null}
 
-          <p className="flex items-start gap-2 text-sm font-medium text-green">
-            <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={2} />
-            Sua solicitação será confirmada pelo WhatsApp antes do envio.
-          </p>
+        {step === 3 ? (
+          <div className="mt-5 space-y-4">
+            <h3 className="font-heading text-lg font-bold text-text">Confirme seu agendamento</h3>
 
-          {submitError ? (
-            <p className="rounded-lg bg-magenta-soft px-4 py-3 text-sm font-medium text-magenta-dark">
-              {submitError}
+            <div className="space-y-2 rounded-lg bg-offwhite p-4 text-sm text-text">
+              <p>
+                <span className="font-semibold">Produto:</span> Clareador de Manchas 200g
+              </p>
+              <p>
+                <span className="font-semibold">Quantidade:</span> 1 unidade
+              </p>
+              <p>
+                <span className="font-semibold">Valor:</span> {pricingCuritiba.count}x de{" "}
+                {pricingCuritiba.installmentPrice} no cartão ou {pricingCuritiba.cashPrice} à vista
+              </p>
+              <p>
+                <span className="font-semibold">Pagamento:</span> somente na entrega
+              </p>
+              <p>
+                <span className="font-semibold">Cidade:</span> Curitiba - PR
+              </p>
+              <p className="pt-1 text-text-secondary">
+                <span className="font-semibold text-text">Endereço:</span> {form.street}, {form.number}
+                {form.complement ? ` - ${form.complement}` : ""} · {form.district} · CEP {form.zipCode}
+              </p>
+              <p className="text-text-secondary">
+                <span className="font-semibold text-text">Contato:</span> {form.name} · {form.phone}
+              </p>
+            </div>
+
+            <p className="flex items-start gap-2 text-sm font-medium text-green">
+              <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={2} />
+              Seu agendamento será confirmado pelo WhatsApp antes do envio.
             </p>
-          ) : null}
 
-          <div className="flex gap-3">
-            <button
-              type="button"
-              onClick={goBack}
-              disabled={isSubmitting}
-              className="rounded-button border border-border bg-white px-6 py-3 font-heading text-base font-semibold text-text transition-colors duration-200 ease-snappy hover:border-turquoise hover:text-turquoise disabled:opacity-50"
-            >
-              Voltar
-            </button>
-            <button
-              type="button"
-              onClick={handleSubmit}
-              disabled={isSubmitting}
-              className="flex-1 rounded-button bg-magenta px-6 py-3 font-heading text-base font-semibold text-white transition-colors duration-200 ease-snappy hover:bg-magenta-dark disabled:opacity-60"
-            >
-              {isSubmitting ? "Enviando..." : ctaLabelsCuritiba.formSubmit}
-            </button>
+            {submitError ? (
+              <p className="rounded-lg bg-magenta-soft px-4 py-3 text-sm font-medium text-magenta-dark">
+                {submitError}
+              </p>
+            ) : null}
+
+            <div className="flex gap-3">
+              <button
+                type="button"
+                onClick={goBack}
+                disabled={isSubmitting}
+                className="rounded-button border border-border bg-white px-6 py-3 font-heading text-base font-semibold text-text transition-colors duration-200 ease-snappy hover:border-turquoise hover:text-turquoise disabled:opacity-50"
+              >
+                Voltar
+              </button>
+              <button
+                type="button"
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+                className="flex-1 rounded-button bg-magenta px-6 py-3 font-heading text-base font-semibold text-white transition-colors duration-200 ease-snappy hover:bg-magenta-dark disabled:opacity-60"
+              >
+                {isSubmitting ? "Enviando..." : ctaLabelsCuritiba.formSubmit}
+              </button>
+            </div>
           </div>
-        </div>
-      ) : null}
+        ) : null}
 
-      <p className="mt-6 text-xs leading-relaxed text-text-secondary">
-        Usamos seus dados apenas para confirmar a entrega deste produto pelo WhatsApp.
-      </p>
-    </div>
+        <p className="mt-6 text-xs leading-relaxed text-text-secondary">
+          Usamos seus dados apenas para confirmar este agendamento pelo WhatsApp.
+        </p>
+      </div>
+    </>
   );
 }
