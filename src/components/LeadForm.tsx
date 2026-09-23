@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CalendarCheck, CheckCircle2, ShieldCheck, X } from "lucide-react";
+import { CalendarCheck, ShieldCheck, X } from "lucide-react";
 import { submitCuritibaLead } from "@/app/curitiba/actions";
 import {
   CPF_FIELD_ENABLED,
@@ -84,7 +84,6 @@ export function LeadForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [showIntroModal, setShowIntroModal] = useState(false);
-  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     function showModalWhenFormIsTarget() {
@@ -174,7 +173,10 @@ export function LeadForm() {
         product: "clareador_manchas_200g",
         value: 127,
       });
-      setSuccess(true);
+      // A full navigation, not router.push: /obrigado fires the Google Ads
+      // conversion via a raw inline <script>, which only runs on a real page
+      // load — a client-side transition mounts the tag without executing it.
+      window.location.href = "/obrigado";
     } catch {
       setSubmitError(
         "Não conseguimos enviar seu agendamento agora. Atualize a página e tente novamente, ou chame no WhatsApp.",
@@ -182,25 +184,6 @@ export function LeadForm() {
     } finally {
       setIsSubmitting(false);
     }
-  }
-
-  if (success) {
-    return (
-      <div
-        id={FORM_ANCHOR}
-        className="reveal mx-auto max-w-xl rounded-card border border-border bg-white p-8 text-center shadow-sm sm:p-10"
-      >
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-soft">
-          <CheckCircle2 className="h-9 w-9 text-green" strokeWidth={2} />
-        </div>
-        <h3 className="mt-5 font-heading text-xl font-bold text-text sm:text-2xl">
-          Agendamento solicitado!
-        </h3>
-        <p className="mt-3 text-sm leading-relaxed text-text-secondary sm:text-base">
-          Vamos confirmar seus dados pelo WhatsApp antes de agendar a entrega.
-        </p>
-      </div>
-    );
   }
 
   return (
