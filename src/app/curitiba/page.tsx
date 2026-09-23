@@ -25,7 +25,7 @@ import {
 
 const title = `${PRODUCT_NAME_CURITIBA} em Curitiba`;
 const description =
-  "Solicite a entrega do Clareador de Manchas em Curitiba. Pagamento somente na entrega. Confirmamos seus dados pelo WhatsApp antes do envio.";
+  "Faça o agendamento do Clareador de Manchas em Curitiba. Pagamento somente na entrega. Confirmamos seus dados pelo WhatsApp antes do envio.";
 
 export const metadata: Metadata = {
   title,
@@ -89,11 +89,11 @@ export default function CuritibaPage() {
             bullets={[]}
             priceNote={heroPriceNoteCuritiba}
             installments={pricingCuritiba}
-            trustLine="Sua entrega é confirmada por WhatsApp antes do envio."
+            trustLine="Seu agendamento é confirmado por WhatsApp antes do envio."
             ctaLabel={ctaLabelsCuritiba.hero}
             ctaLink={`#${FORM_ANCHOR}`}
             ctaVariant="secondary"
-            paymentNote="Preencha seus dados e a gente confirma pelo WhatsApp."
+            paymentNote="Preencha seus dados para fazer o agendamento da entrega."
           />
 
           <Resultados
@@ -114,7 +114,7 @@ export default function CuritibaPage() {
             title="Como funciona a entrega em Curitiba"
             steps={[
               {
-                title: "Solicite seu agendamento",
+                title: "Faça seu agendamento",
                 text: "Preencha seus dados de entrega aqui no site.",
               },
               {
@@ -126,7 +126,7 @@ export default function CuritibaPage() {
                 text: "Escolha dinheiro, Pix ou cartão no momento da entrega.",
               },
             ]}
-            note="Sua solicitação é confirmada pelo WhatsApp antes de ser enviada para agendamento."
+            note="Após preencher o formulário, seu agendamento será registrado e confirmado pelo WhatsApp."
           />
 
           <Oferta
@@ -144,9 +144,9 @@ export default function CuritibaPage() {
 
           <Section bg="offwhite">
             <SectionHeading
-              eyebrow="Solicitação"
-              title="Solicite sua entrega em Curitiba"
-              text="Preencha seus dados em poucos passos. Confirmamos tudo pelo WhatsApp antes do envio."
+              eyebrow="Agendamento"
+              title="Faça seu agendamento em Curitiba"
+              text="Preencha seus dados em poucos passos para agendar sua entrega. Confirmamos tudo pelo WhatsApp antes do envio."
             />
             <div className="mt-10">
               <LeadForm />
@@ -157,7 +157,7 @@ export default function CuritibaPage() {
 
           <CtaFinal
             title="Receba o Clareador de Manchas em Curitiba"
-            text="Clareador de Manchas Amazon Kaps Cicatridiva 200g. Solicite sua entrega e pague somente quando receber."
+            text="Clareador de Manchas Amazon Kaps Cicatridiva 200g. Faça seu agendamento e pague somente quando receber."
             priceLabel="R$ 127,00 à vista"
             ctaLabel={ctaLabelsCuritiba.fechamento}
             ctaLink={`#${FORM_ANCHOR}`}
