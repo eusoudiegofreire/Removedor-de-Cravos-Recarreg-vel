@@ -355,8 +355,8 @@ export function CheckoutForm() {
               <span className="font-semibold">Quantidade:</span> 1 unidade
             </p>
             <p>
-              <span className="font-semibold">Valor:</span> {pricingCuritiba.count}x de{" "}
-              {pricingCuritiba.installmentPrice} no cartão ou {pricingCuritiba.cashPrice} à vista
+              <span className="font-semibold">Valor:</span> {pricingCuritiba.cashPrice} à vista ou{" "}
+              {pricingCuritiba.count}x de {pricingCuritiba.installmentPrice} no cartão
             </p>
             <p>
               <span className="font-semibold">Pagamento:</span> somente na entrega

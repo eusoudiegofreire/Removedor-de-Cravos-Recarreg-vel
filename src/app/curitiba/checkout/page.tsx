@@ -35,11 +35,13 @@ function OrderSummary() {
 
       <div className="mt-4 flex flex-wrap items-end gap-3">
         <span className="font-heading text-2xl font-bold text-magenta">
-          {pricingCuritiba.count}x de {pricingCuritiba.installmentPrice}
+          {pricingCuritiba.cashPrice}
         </span>
-        <span className="text-sm text-text-secondary">no cartão</span>
+        <span className="text-sm text-text-secondary">à vista</span>
       </div>
-      <p className="text-sm text-text-secondary">ou {pricingCuritiba.cashPrice} à vista</p>
+      <p className="text-sm text-text-secondary">
+        ou {pricingCuritiba.count}x de {pricingCuritiba.installmentPrice} no cartão
+      </p>
 
       <ul className="mt-4 space-y-2.5">
         {summaryBullets.map(({ icon: Icon, text }) => (

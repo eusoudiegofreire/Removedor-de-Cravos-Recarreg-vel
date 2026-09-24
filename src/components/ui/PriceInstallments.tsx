@@ -19,10 +19,10 @@ export function PriceInstallments({ info, className = "" }: PriceInstallmentsPro
   return (
     <div className={className}>
       <p className="font-heading text-2xl font-bold text-magenta sm:text-3xl">
-        {info.count}x de {info.installmentPrice} no cartão
+        {info.cashPrice} à vista
       </p>
       <p className="mt-1 text-base font-medium text-text">
-        ou {info.cashPrice} à vista
+        ou {info.count}x de {info.installmentPrice} no cartão
       </p>
     </div>
   );
