@@ -98,8 +98,7 @@ export default function CuritibaCheckoutPage() {
                 Finalize seu agendamento em Curitiba
               </h1>
               <p className="mt-2 text-base leading-relaxed text-text-secondary">
-                Preencha seus dados em poucos passos. Nossa equipe confirma tudo pelo WhatsApp
-                antes de agendar a entrega.
+                Preencha seus dados em poucos passos.
               </p>
 
               <div className="mt-6">
