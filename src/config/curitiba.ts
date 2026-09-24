@@ -6,8 +6,8 @@ export const curitiba = {
   state: "PR",
 };
 
-/** Anchor id the CTAs scroll to instead of linking straight to the Logzz checkout. */
-export const FORM_ANCHOR = "agendamento";
+/** Every CTA on /curitiba links here instead of straight to the Logzz checkout. */
+export const CHECKOUT_PATH = "/curitiba/checkout";
 
 export const PRODUCT_NAME_CURITIBA = "Clareador de Manchas Amazon Kaps Cicatridiva 200g";
 

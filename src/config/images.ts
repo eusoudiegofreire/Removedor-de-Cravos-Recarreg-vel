@@ -67,6 +67,20 @@ export const resultadosImages: ProductImage[] = [
   },
 ];
 
+export const checkoutBannerCuritiba: ProductImage = {
+  src: "/images/amazole/checkout-banner-curitiba.webp",
+  width: 1600,
+  height: 600,
+  alt: "Receba em casa e pague na entrega. Entrega em 24 horas úteis em Curitiba, frete grátis, dinheiro, Pix ou cartão.",
+};
+
+export const checkoutProdutoCuritiba: ProductImage = {
+  src: "/images/amazole/checkout-produto-curitiba.webp",
+  width: 900,
+  height: 1599,
+  alt: "Clareador de Manchas Amazon Kaps Cicatridiva 200g. Pague só na entrega, R$ 127,00, frete grátis em Curitiba.",
+};
+
 export const depoimentosImages: ProductImage[] = [
   {
     src: "/images/amazole/depoimento-whatsapp-1.webp",

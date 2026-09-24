@@ -7,13 +7,13 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { InformacoesComplementares } from "@/components/InformacoesComplementares";
-import { LeadForm } from "@/components/LeadForm";
 import { Oferta } from "@/components/Oferta";
 import { Resultados } from "@/components/Resultados";
+import { Button } from "@/components/ui/Button";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { SITE_URL, site } from "@/config/site";
 import {
-  FORM_ANCHOR,
+  CHECKOUT_PATH,
   PRODUCT_NAME_CURITIBA,
   areasCuritiba,
   ctaLabelsCuritiba,
@@ -91,7 +91,7 @@ export default function CuritibaPage() {
             showPrice={false}
             trustLine=""
             ctaLabel={ctaLabelsCuritiba.hero}
-            ctaLink={`#${FORM_ANCHOR}`}
+            ctaLink={CHECKOUT_PATH}
             ctaVariant="secondary"
             paymentNote="Preencha seus dados para fazer o agendamento da entrega."
           />
@@ -99,7 +99,7 @@ export default function CuritibaPage() {
           <Resultados
             title="Resultados reais de quem usou o Clareador de Manchas"
             ctaLabel={ctaLabelsCuritiba.resultados}
-            ctaLink={`#${FORM_ANCHOR}`}
+            ctaLink={CHECKOUT_PATH}
             ctaVariant="secondary"
             ctaNote="Pagamento somente na entrega."
           />
@@ -135,7 +135,7 @@ export default function CuritibaPage() {
             includes={ofertaIncludesCuritiba}
             installments={pricingCuritiba}
             ctaLabel={ctaLabelsCuritiba.oferta}
-            ctaLink={`#${FORM_ANCHOR}`}
+            ctaLink={CHECKOUT_PATH}
             ctaVariant="secondary"
             footnote="Você paga somente quando receber."
           />
@@ -148,8 +148,10 @@ export default function CuritibaPage() {
               title="Faça seu agendamento em Curitiba"
               text="Preencha seus dados em poucos passos para agendar sua entrega. Confirmamos tudo pelo WhatsApp antes do envio."
             />
-            <div className="mt-10">
-              <LeadForm />
+            <div className="reveal mx-auto mt-10 flex justify-center">
+              <Button href={CHECKOUT_PATH} variant="secondary" size="lg">
+                {ctaLabelsCuritiba.hero}
+              </Button>
             </div>
           </Section>
 
@@ -160,7 +162,7 @@ export default function CuritibaPage() {
             text="Clareador de Manchas Amazon Kaps Cicatridiva 200g. Faça seu agendamento e pague somente quando receber."
             priceLabel="R$ 127,00 à vista"
             ctaLabel={ctaLabelsCuritiba.fechamento}
-            ctaLink={`#${FORM_ANCHOR}`}
+            ctaLink={CHECKOUT_PATH}
             footnote="Pagamento somente na entrega: dinheiro, Pix ou cartão."
           />
         </main>
