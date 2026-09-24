@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import { GOOGLE_ADS_ID, GTM_ID, SITE_URL, site } from "@/config/site";
 import "./globals.css";
 
-const inter = Inter({
+// Self-hosted instead of next/font/google: Turbopack fetches Google Fonts
+// over the network at build time, and that fetch has failed intermittently
+// on Vercel's build infra (even with the build cache disabled) — a local
+// file removes that dependency entirely. Single variable font file (weights
+// 400-700 in one .woff2), downloaded from Google Fonts' own CDN once.
+const inter = localFont({
+  src: "../fonts/inter/Inter-Variable.woff2",
   variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "400 700",
+  display: "swap",
 });
 
 const title = `${site.productName} | Pagamento na Entrega`;
