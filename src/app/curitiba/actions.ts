@@ -1,10 +1,6 @@
 "use server";
 
-import {
-  INSTALLMENTS_PAYLOAD_LABEL,
-  PRICE_CASH_RAW,
-  PRODUCT_NAME_CURITIBA,
-} from "@/config/curitiba";
+import { PRICE_CASH_RAW, PRODUCT_NAME_CURITIBA, installmentOptionsCuritiba } from "@/config/curitiba";
 import {
   isValidCEPDigits,
   isValidCPF,
@@ -21,6 +17,7 @@ export type LeadSubmission = {
   number: string;
   district: string;
   complement: string;
+  installmentsCount: number;
   utmSource: string | null;
   utmMedium: string | null;
   utmCampaign: string | null;
@@ -51,6 +48,13 @@ export async function submitCuritibaLead(input: LeadSubmission): Promise<LeadRes
     return { ok: false, message: GENERIC_ERROR };
   }
 
+  const installmentOption = installmentOptionsCuritiba.find(
+    (option) => option.count === input.installmentsCount,
+  );
+  if (!installmentOption) {
+    return { ok: false, message: GENERIC_ERROR };
+  }
+
   const webhookUrl = process.env.N8N_WEBHOOK_URL;
   if (!webhookUrl) {
     console.error("N8N_WEBHOOK_URL não configurada — agendamento de Curitiba não enviado.");
@@ -63,7 +67,10 @@ export async function submitCuritibaLead(input: LeadSubmission): Promise<LeadRes
     state: "PR",
     product_name: PRODUCT_NAME_CURITIBA,
     product_price_cash: PRICE_CASH_RAW,
-    product_installments: INSTALLMENTS_PAYLOAD_LABEL,
+    payment_installments_count: installmentOption.count,
+    payment_installment_value: installmentOption.installmentRaw.toFixed(2),
+    payment_total_value: installmentOption.totalRaw.toFixed(2),
+    product_installments: `${installmentOption.count}x de ${installmentOption.installmentLabel}`,
     payment_method: "Pagamento na entrega",
     quantity: 1,
     client_name: input.name.trim(),

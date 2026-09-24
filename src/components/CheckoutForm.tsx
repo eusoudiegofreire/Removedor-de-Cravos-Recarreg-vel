@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ShieldCheck } from "lucide-react";
 import { submitCuritibaLead } from "@/app/curitiba/actions";
-import { CPF_FIELD_ENABLED, ctaLabelsCuritiba, pricingCuritiba } from "@/config/curitiba";
+import { CPF_FIELD_ENABLED, ctaLabelsCuritiba, type InstallmentOption } from "@/config/curitiba";
 import { track } from "@/lib/track";
 import {
   formatCEP,
@@ -51,7 +51,11 @@ const inputClass =
 const labelClass = "text-sm font-semibold text-text";
 const errorClass = "mt-1 text-xs font-medium text-magenta-dark";
 
-export function CheckoutForm() {
+type CheckoutFormProps = {
+  selectedInstallment: InstallmentOption;
+};
+
+export function CheckoutForm({ selectedInstallment }: CheckoutFormProps) {
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [form, setForm] = useState<FormData>(emptyForm);
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
@@ -141,6 +145,7 @@ export function CheckoutForm() {
         number: form.number,
         district: form.district,
         complement: form.complement,
+        installmentsCount: selectedInstallment.count,
         ...utm,
         pageUrl: window.location.href,
       });
@@ -355,8 +360,10 @@ export function CheckoutForm() {
               <span className="font-semibold">Quantidade:</span> 1 unidade
             </p>
             <p>
-              <span className="font-semibold">Valor:</span> {pricingCuritiba.cashPrice} à vista ou{" "}
-              {pricingCuritiba.count}x de {pricingCuritiba.installmentPrice} no cartão
+              <span className="font-semibold">Valor:</span>{" "}
+              {selectedInstallment.count === 1
+                ? `R$ 127,00 à vista`
+                : `${selectedInstallment.count}x de ${selectedInstallment.installmentLabel} no cartão (total ${selectedInstallment.totalLabel})`}
             </p>
             <p>
               <span className="font-semibold">Pagamento:</span> somente na entrega

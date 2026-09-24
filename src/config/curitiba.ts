@@ -26,6 +26,40 @@ export const pricingCuritiba: InstallmentInfo = {
 export const PRICE_CASH_RAW = "127.00";
 export const INSTALLMENTS_PAYLOAD_LABEL = "12x de R$13,17";
 
+export type InstallmentOption = {
+  count: number;
+  /** Per-installment amount, raw (for the webhook payload). */
+  installmentRaw: number;
+  /** Per-installment amount, formatted for display. */
+  installmentLabel: string;
+  /** count × installmentRaw, raw (for the webhook payload) — includes the card fee for 2x+. */
+  totalRaw: number;
+  /** Same total, formatted for display. */
+  totalLabel: string;
+};
+
+/**
+ * Matches exactly what the Logzz checkout's "Simular parcelamento" dropdown
+ * shows for this offer (screenshotted by the user 2026-09-25) — the
+ * per-installment fee schedule isn't a flat/computable rate, so these are
+ * the real numbers, not derived from a formula. Update this whole table
+ * together if the Logzz offer or its installment fees ever change.
+ */
+export const installmentOptionsCuritiba: InstallmentOption[] = [
+  { count: 1, installmentRaw: 127.0, installmentLabel: "R$ 127,00", totalRaw: 127.0, totalLabel: "R$ 127,00" },
+  { count: 2, installmentRaw: 72.42, installmentLabel: "R$ 72,42", totalRaw: 144.84, totalLabel: "R$ 144,84" },
+  { count: 3, installmentRaw: 48.63, installmentLabel: "R$ 48,63", totalRaw: 145.89, totalLabel: "R$ 145,89" },
+  { count: 4, installmentRaw: 36.83, installmentLabel: "R$ 36,83", totalRaw: 147.32, totalLabel: "R$ 147,32" },
+  { count: 5, installmentRaw: 29.59, installmentLabel: "R$ 29,59", totalRaw: 147.95, totalLabel: "R$ 147,95" },
+  { count: 6, installmentRaw: 24.85, installmentLabel: "R$ 24,85", totalRaw: 149.1, totalLabel: "R$ 149,10" },
+  { count: 7, installmentRaw: 21.73, installmentLabel: "R$ 21,73", totalRaw: 152.11, totalLabel: "R$ 152,11" },
+  { count: 8, installmentRaw: 19.16, installmentLabel: "R$ 19,16", totalRaw: 153.28, totalLabel: "R$ 153,28" },
+  { count: 9, installmentRaw: 17.16, installmentLabel: "R$ 17,16", totalRaw: 154.44, totalLabel: "R$ 154,44" },
+  { count: 10, installmentRaw: 15.56, installmentLabel: "R$ 15,56", totalRaw: 155.6, totalLabel: "R$ 155,60" },
+  { count: 11, installmentRaw: 14.26, installmentLabel: "R$ 14,26", totalRaw: 156.86, totalLabel: "R$ 156,86" },
+  { count: 12, installmentRaw: 13.17, installmentLabel: "R$ 13,17", totalRaw: 158.04, totalLabel: "R$ 158,04" },
+];
+
 /**
  * Turn this off to drop the CPF field from the form (step 1) and its FAQ
  * entry. Off by default: an optional CPF question ahead of a lead form can
