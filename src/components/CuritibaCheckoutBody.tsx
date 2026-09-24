@@ -4,7 +4,7 @@ import { useState } from "react";
 import { CheckCircle2, ShieldCheck, Truck, Wallet } from "lucide-react";
 import { CheckoutForm } from "@/components/CheckoutForm";
 import { PhotoCard } from "@/components/ui/PhotoCard";
-import { checkoutBannerCuritiba, checkoutProdutoCuritiba } from "@/config/images";
+import { checkoutBannerCuritiba } from "@/config/images";
 import {
   PRODUCT_NAME_CURITIBA,
   installmentOptionsCuritiba,
@@ -24,7 +24,7 @@ type OrderSummaryProps = {
 
 function OrderSummary({ selected, onSelectCount }: OrderSummaryProps) {
   return (
-    <div className="mt-6 rounded-card border border-border bg-white p-5 shadow-sm">
+    <div className="rounded-card border border-border bg-white p-5 shadow-sm">
       <p className="text-xs font-semibold uppercase tracking-wide text-text-secondary">
         Resumo do pedido
       </p>
@@ -80,50 +80,38 @@ export function CuritibaCheckoutBody() {
   }
 
   return (
-    <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-start lg:gap-12">
-      <div className="lg:sticky lg:top-24">
-        <div className="lg:hidden">
-          <PhotoCard
-            src={checkoutBannerCuritiba.src}
-            alt={checkoutBannerCuritiba.alt}
-            width={checkoutBannerCuritiba.width}
-            height={checkoutBannerCuritiba.height}
-            sizes="100vw"
-            priority
-          />
-        </div>
+    <div>
+      <PhotoCard
+        src={checkoutBannerCuritiba.src}
+        alt={checkoutBannerCuritiba.alt}
+        width={checkoutBannerCuritiba.width}
+        height={checkoutBannerCuritiba.height}
+        sizes="(min-width: 1024px) 1100px, 100vw"
+        priority
+      />
 
-        <div className="hidden lg:block">
-          <PhotoCard
-            src={checkoutProdutoCuritiba.src}
-            alt={checkoutProdutoCuritiba.alt}
-            width={checkoutProdutoCuritiba.width}
-            height={checkoutProdutoCuritiba.height}
-            sizes="420px"
-            priority
-            className="mx-auto max-w-sm"
-          />
-        </div>
-
-        <OrderSummary selected={selected} onSelectCount={handleSelectCount} />
-      </div>
-
-      <div className="mt-8 lg:mt-0">
-        <div className="mx-auto flex items-center gap-2 lg:mx-0">
-          <CheckCircle2 className="h-5 w-5 shrink-0 text-green" strokeWidth={2} />
-          <p className="text-sm font-semibold text-green">
-            Você recebe primeiro e paga somente na entrega
+      <div className="mt-8 grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] lg:items-start lg:gap-12">
+        <div className="order-2 lg:order-1">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="h-5 w-5 shrink-0 text-green" strokeWidth={2} />
+            <p className="text-sm font-semibold text-green">
+              Você recebe primeiro e paga somente na entrega
+            </p>
+          </div>
+          <h1 className="mt-3 font-heading text-2xl font-bold leading-tight text-text sm:text-3xl">
+            Finalize seu agendamento em Curitiba
+          </h1>
+          <p className="mt-2 text-base leading-relaxed text-text-secondary">
+            Preencha seus dados em poucos passos.
           </p>
-        </div>
-        <h1 className="mt-3 font-heading text-2xl font-bold leading-tight text-text sm:text-3xl">
-          Finalize seu agendamento em Curitiba
-        </h1>
-        <p className="mt-2 text-base leading-relaxed text-text-secondary">
-          Preencha seus dados em poucos passos.
-        </p>
 
-        <div className="mt-6">
-          <CheckoutForm selectedInstallment={selected} />
+          <div className="mt-6">
+            <CheckoutForm selectedInstallment={selected} />
+          </div>
+        </div>
+
+        <div className="order-1 mt-8 lg:order-2 lg:mt-0 lg:sticky lg:top-24">
+          <OrderSummary selected={selected} onSelectCount={handleSelectCount} />
         </div>
       </div>
     </div>
