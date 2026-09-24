@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { ShieldCheck } from "lucide-react";
 import { submitCuritibaLead } from "@/app/curitiba/actions";
 import { CPF_FIELD_ENABLED, ctaLabelsCuritiba, type InstallmentOption } from "@/config/curitiba";
 import { track } from "@/lib/track";
@@ -380,11 +379,6 @@ export function CheckoutForm({ selectedInstallment }: CheckoutFormProps) {
             </p>
           </div>
 
-          <p className="flex items-start gap-2 text-sm font-medium text-green">
-            <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0" strokeWidth={2} />
-            Seu agendamento será confirmado pelo WhatsApp antes do envio.
-          </p>
-
           {submitError ? (
             <p className="rounded-lg bg-magenta-soft px-4 py-3 text-sm font-medium text-magenta-dark">
               {submitError}
@@ -413,7 +407,7 @@ export function CheckoutForm({ selectedInstallment }: CheckoutFormProps) {
       ) : null}
 
       <p className="mt-6 text-xs leading-relaxed text-text-secondary">
-        Usamos seus dados apenas para confirmar este agendamento pelo WhatsApp.
+        Usamos seus dados apenas para processar e entregar este pedido.
       </p>
     </div>
   );
