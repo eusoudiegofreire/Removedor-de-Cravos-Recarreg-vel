@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, ShieldCheck, Truck, Wallet } from "lucide-react";
+import { CheckCircle2, Truck, Wallet } from "lucide-react";
 import { CheckoutForm } from "@/components/CheckoutForm";
 import { PhotoCard } from "@/components/ui/PhotoCard";
 import { checkoutBannerCuritiba } from "@/config/images";
@@ -14,7 +14,6 @@ import {
 const summaryBullets = [
   { icon: Wallet, text: "Pagamento somente na entrega" },
   { icon: Truck, text: "Frete grátis e entrega em 24 horas úteis em Curitiba" },
-  { icon: ShieldCheck, text: "Agendamento confirmado pelo WhatsApp antes do envio" },
 ];
 
 type OrderSummaryProps = {
